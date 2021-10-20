@@ -1,10 +1,10 @@
-import React,{useEffect,useState} from "react";
+import React from "react";
 import './App.css';
 import TodoForm from "./components/TodoForm";
 import TodoList from "./components/TodoList";
 import todo from "./todo.svg";
 
-const Local_storage_key = "react-todo-list-todos";
+
 
 function App() {
 
