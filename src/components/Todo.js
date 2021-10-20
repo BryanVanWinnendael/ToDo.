@@ -24,7 +24,7 @@ function Todo({ todo }){
     return(
       <li>
      
-      <img src={Delete} className="x"  onClick={deleteTodo} />
+      <img src={Delete} className="x"  onClick={deleteTodo} alt="delete" />
       <p
         type="text"
         className="list"

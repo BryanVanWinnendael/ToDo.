@@ -12,7 +12,7 @@ function App() {
    
     <div className="App">
       <div className="card">
-      <img src={todo}   style={{
+      <img src={todo}  alt="banner" style={{
           width:"60%",
           maxWidth:"400px"
         }}       
