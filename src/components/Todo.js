@@ -5,22 +5,14 @@ import firebase from "../util/firebase";
 function Todo({ todo }){
 
 
-    const [newTitle, setNewTitle] = useState("");
+  const [newTitle] = useState("");
 
   const deleteTodo = () => {
     const todoRef = firebase.database().ref("Todo").child(todo.id);
     todoRef.remove();
   };
   
-  const handleChange = (e) => {
-    //e.preventDefault();
-    if (todo.complete === true) {
-      setNewTitle(todo.title);
-    } else {
-      todo.title = "";
-      setNewTitle(e.target.value);
-    }
-  };
+
     return(
       <li>
      
