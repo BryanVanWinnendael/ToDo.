@@ -2,8 +2,7 @@ import React from "react";
 import './App.css';
 import TodoForm from "./components/TodoForm";
 import TodoList from "./components/TodoList";
-import todo from "./todo.svg";
-import img1 from "./4.svg"
+
 
 
 
