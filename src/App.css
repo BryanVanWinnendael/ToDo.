@@ -34,6 +34,7 @@ ul {
   min-height: 500px;
   height: auto;
 }
+
 .box {
   display: flex;
   flex-direction: column;
