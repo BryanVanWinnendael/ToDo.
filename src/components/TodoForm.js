@@ -21,15 +21,25 @@ function TodoForm(){
     };
 
     return(
-        <form onSubmit={createTodo}>
+        <form onSubmit={createTodo}  
+        style={{
+          display:"flex",
+          flexDirection:"column",
+          alignItems:"center"
+        }}>
             <input 
             name="task"
             type="text"
             value={title}
             required
             onChange={handleChange}
+            style={{
+              margin:"10px"
+            }}
             />
-           <button type="submit" >Submit</button>
+           <button type="submit" style={{
+             width:"50%"
+           }}>Submit</button>
         </form>
     );
 }

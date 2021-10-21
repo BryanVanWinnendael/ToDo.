@@ -7,6 +7,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   -webkit-tap-highlight-color: transparent;
   background-color: #282c34;
+  overflow-y: hidden;
 }
 
 code {

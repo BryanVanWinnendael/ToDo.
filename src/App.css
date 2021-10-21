@@ -29,9 +29,8 @@ ul {
   margin-bottom: 15px;
   color: white;
   background-color: #282c34;
-  box-shadow: 2px 2px 4px #c1c8e4;
   border-radius: 15px;
-  width: 80%;
+  width: 100%;
   min-height: 500px;
   height: auto;
 }
@@ -42,6 +41,7 @@ ul {
 }
 .boxList {
   padding: 0;
+  overflow-y: scroll;
 }
 
 input[type="text"] {
