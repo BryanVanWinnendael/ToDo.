@@ -25,13 +25,18 @@ function Todo({ todo }){
       <li>
      
       <img src={Delete} className="x"  onClick={deleteTodo} alt="delete" />
+     
       <p
         type="text"
         className="list"
-        onChange={handleChange}
+        // style={{
+        //   maxWidth:"300px"
+        // }}
       >
         {todo.title === "" ? newTitle : todo.title}
       </p>
+     
+      
     </li>
     );
 }

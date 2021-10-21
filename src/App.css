@@ -40,15 +40,16 @@ ul {
   align-items: center;
 }
 .boxList {
+  height: 200px;
   padding: 0;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 input[type="text"] {
   color: white;
   display: inline-block;
   border: none;
-  background: linear-gradient(
+  /* background: linear-gradient(
       to right,
       #c1c8e4 0%,
       #84ceeb 12%,
@@ -56,7 +57,9 @@ input[type="text"] {
       #8860d0 100%
     )
     left bottom #5ab9ea no-repeat;
-  background-size: 100% 2px;
+  background-size: 100% 2px; */
+
+  border-bottom: 2px solid #5680e9;
   height: 25px;
   width: auto;
   background-color: transparent;
@@ -84,15 +87,15 @@ button {
   font-size: large;
   border-radius: 6px;
   margin-right: 10px;
-  border: solid 3px transparent;
-  background-image: linear-gradient(
+  border: solid 3px #5680e9;
+  /* background-image: linear-gradient(
       rgba(255, 255, 255, 0),
       rgba(255, 255, 255, 0)
     ),
     linear-gradient(101deg, #5680e9, #8860d0);
   background-origin: border-box;
   background-clip: content-box, border-box;
-  box-shadow: 2px 1000px 1px #282c34 inset;
+  box-shadow: 2px 1000px 1px #282c34 inset; */
   background-color: transparent;
   transition-duration: 0.4s;
 }
@@ -104,6 +107,7 @@ button:hover {
 }
 
 .x {
+  width: 30px;
   margin-right: 10px;
   filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(308deg)
     brightness(105%) contrast(104%);
@@ -116,9 +120,14 @@ button:hover {
 }
 
 li {
-  margin: 5px;
-  height: 100%;
+  height: auto;
   display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+p {
+  max-width: 300px;
 }
 
 .App-link {

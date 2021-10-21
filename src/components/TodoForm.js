@@ -37,9 +37,7 @@ function TodoForm(){
               margin:"10px"
             }}
             />
-           <button type="submit" style={{
-             width:"50%"
-           }}>Submit</button>
+           <button type="submit" >Submit</button>
         </form>
     );
 }
