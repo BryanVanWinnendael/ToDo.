@@ -9,6 +9,7 @@ body {
   background-color: #282c34;
   overflow-y: hidden;
   overflow-x: hidden;
+  -webkit-overflow-scrolling: hidden;
 }
 
 code {
