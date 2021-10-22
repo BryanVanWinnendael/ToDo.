@@ -3,7 +3,7 @@ import './App.css';
 import Home from "./Home"
 import Work from "./Work"
 
-import {Route,Link} from 'react-router-dom'
+import {Route} from 'react-router-dom'
 
 
 
