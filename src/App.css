@@ -137,6 +137,73 @@ p {
   color: #61dafb;
 }
 
+.workbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("./mountain.gif");
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  animation: img 50s alternate infinite;
+}
+
+@keyframes img {
+  0% {
+    background-image: url("./mountaind.gif");
+  }
+  50% {
+    background-image: url("./mountains.gif");
+  }
+  100% {
+    background-image: url("./mountain.gif");
+  }
+}
+
+#Vector_23 {
+  animation: move1 2s alternate infinite;
+}
+#Vector_24 {
+  animation: move2 2s alternate infinite;
+}
+
+#Vector_49 {
+  animation: move 0.2s alternate infinite;
+}
+#Vector_48 {
+  animation: move 0.2s alternate infinite;
+}
+
+@keyframes move {
+  0% {
+    transform: translateY(0px);
+  }
+
+  100% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes move1 {
+  0% {
+    transform: translateY(0px);
+  }
+
+  100% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes move2 {
+  0% {
+    transform: translateY(0px);
+  }
+
+  100% {
+    transform: translateY(20px);
+  }
+}
+
 @media screen and (display-mode: standalone) {
   header {
     height: 88px !important;
