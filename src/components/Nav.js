@@ -11,12 +11,17 @@ function Nav(){
         para.classList.toggle("rotate-icon");
         var nav = document.getElementById("navc");
         if(!navs){
+          
+            nav.style.animation = " show 0.5s "
             nav.style.display = "flex";
             navs = true;
-
+            nav.style.left = "0px"
+           
         }
         else{
-            nav.style.display = "none";
+            nav.style.animation = " close 0.6s "
+            nav.style.left = "-100%"
+            setTimeout(function(){ nav.style.display = "none";}, 600);
             navs = false;
         }
 

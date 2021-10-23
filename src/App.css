@@ -194,12 +194,33 @@ nav ul li a {
   margin: 0;
   background-color: #222429;
   position: absolute;
-  left: 0;
+  left: -100%;
   top: 0;
   flex-direction: column;
   width: 200px;
   height: 50%;
+  transition-duration: 0.4s;
 }
+@keyframes show {
+  0% {
+    left: -100%;
+  }
+
+  100% {
+    left: 0;
+  }
+}
+
+@keyframes close {
+  0% {
+    left: 0;
+  }
+
+  100% {
+    left: -100%;
+  }
+}
+
 .space {
   margin-top: 20px;
 }
@@ -211,7 +232,7 @@ nav ul li a {
 #toggle-icon {
   position: absolute;
   z-index: 10;
-  top: 0;
+  top: 10px;
   left: 10px;
   cursor: pointer;
   margin: 10px;
