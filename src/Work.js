@@ -6,7 +6,7 @@ import './App.css';
 function Work() {
 
   return (
-   
+
     <div className="workbox" style={{
       width:"100%",
       height:"100vh",
@@ -25,18 +25,20 @@ function Work() {
         boxShadow: "5px 5px 8px rgb(136 136 136 / 38%)",
       }}
       >Work </h1> */}
-      <div style={{
-        width:"auto",
-        
+      {/* <div style={{
+     
         
     
-      }}>
+      }}> */}
       <iframe style={{
         borderRadius:"25px",
-        boxShadow: "5px 5px 8px rgb(136 136 136 / 38%)"
+        boxShadow: "5px 5px 8px rgb(136 136 136 / 38%)",
+        marginLeft:"10px",
+        marginRight:"10px",
+
       }}
-      id="iframeId" width="auto" height="300px" src="https://www.youtube.com/embed/videoseries?list=PL6NdkXsPL07IOu1AZ2Y2lGNYfjDStyT6O" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div>
+      id="iframeId" width="400px" height="300px" src="https://www.youtube.com/embed/videoseries?list=PL6NdkXsPL07IOu1AZ2Y2lGNYfjDStyT6O" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      {/* </div> */}
       </div>
 
   );
