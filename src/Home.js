@@ -9,7 +9,7 @@ import TodoList from "./components/TodoList";
 function Home() {
   return (
    
-    <div className="App">
+   
       <div className="card">
       <svg viewBox="0 0 805 782" fill="none" xmlns="http://www.w3.org/2000/svg" style={{
   width:"90%",
@@ -123,7 +123,7 @@ function Home() {
         <TodoList/>
         </div>
       </div>
-    </div>
+
   );
 }
 

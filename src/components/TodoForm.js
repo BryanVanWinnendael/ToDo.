@@ -17,7 +17,7 @@ function TodoForm(){
       };
       todoRef.push(todo);
       // otherRef.push(other);
-      setTitle("");
+      setTitle("");   
     };
 
     return(
