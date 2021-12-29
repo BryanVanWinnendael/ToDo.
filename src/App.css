@@ -7,13 +7,12 @@
 
 .App {
   text-align: center;
-  background-color: #222429;
+  background-color: white;
   min-height: 100vh;
   height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   overflow-x: hidden;
   width: 100%;
 }
@@ -24,101 +23,19 @@ ul {
   flex-direction: column;
   text-align: center;
   justify-content: center;
-}
-
-.card {
-  margin-top: 15px;
-  margin-bottom: 15px;
-  color: white;
-  background-color: #222429;
-  border-radius: 15px;
-
-  min-height: 500px;
-  height: auto;
-  overflow-x: hidden;
-  width: 100%;
-}
-
-.box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.boxList {
+  overflow-x: auto;
   padding: 0;
-}
-
-input[type="text"] {
-  color: white;
-  display: inline-block;
-  border: none;
-  /* background: linear-gradient(
-      to right,
-      #c1c8e4 0%,
-      #84ceeb 12%,
-      #5680e9 47%,
-      #8860d0 100%
-    )
-    left bottom #5ab9ea no-repeat;
-  background-size: 100% 2px; */
-
-  border-bottom: 2px solid #8860d0;
-  height: 25px;
-  width: auto;
-  background-color: transparent;
-}
-
-input[type="text"]:focus {
-  outline: none;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-button {
-  margin-left: 10px;
-  color: white;
-  font-weight: bold;
-  font-size: large;
-  border-radius: 6px;
-  margin-right: 10px;
-  border: solid 3px #8860d0;
-  /* background-image: linear-gradient(
-      rgba(255, 255, 255, 0),
-      rgba(255, 255, 255, 0)
-    ),
-    linear-gradient(101deg, #5680e9, #8860d0);
-  background-origin: border-box;
-  background-clip: content-box, border-box;
-  box-shadow: 2px 1000px 1px #282c34 inset; */
-  background-color: transparent;
-  transition-duration: 0.4s;
-}
-
-button:hover {
-  transform: scale(1.1);
-  cursor: pointer;
-  box-shadow: 2px 1000px 1px transparent inset;
+  margin-bottom: 100px;
 }
 
 .x {
   width: 30px;
   margin-right: 10px;
-  filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(308deg)
-    brightness(105%) contrast(104%);
 }
 
 .x:hover {
-  filter: invert(58%) sepia(70%) saturate(4539%) hue-rotate(231deg)
-    brightness(86%) contrast(88%);
+  filter: invert(37%) sepia(91%) saturate(811%) hue-rotate(175deg)
+    brightness(94%) contrast(93%);
   cursor: pointer;
 }
 
@@ -133,62 +50,19 @@ p {
   max-width: 300px;
 }
 
-.App-link {
-  color: #61dafb;
+.boxtodo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-#Vector_23 {
-  animation: move1 2s alternate infinite;
-}
-#Vector_24 {
-  animation: move2 2s alternate infinite;
+.datepicker {
+  background-color: white;
+  width: 100%;
 }
 
-#Vector_49 {
-  animation: move 0.2s alternate infinite;
-}
-#Vector_48 {
-  animation: move3 0.2s alternate infinite;
-}
-
-@keyframes move3 {
-  0% {
-    transform: translateY(-5px);
-  }
-
-  100% {
-    transform: translateY(0px);
-  }
-}
-
-@keyframes move {
-  0% {
-    transform: translateY(0px);
-  }
-
-  100% {
-    transform: translateY(-5px);
-  }
-}
-
-@keyframes move1 {
-  0% {
-    transform: translateY(0px);
-  }
-
-  100% {
-    transform: translateY(-20px);
-  }
-}
-
-@keyframes move2 {
-  0% {
-    transform: translateY(0px);
-  }
-
-  100% {
-    transform: translateY(20px);
-  }
+@media (min-width: 900px) {
 }
 
 @media screen and (display-mode: standalone) {

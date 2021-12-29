@@ -6,11 +6,33 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-tap-highlight-color: transparent;
-  background-color: #222429;
+  background-color: white;
   overflow-x: hidden;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+:root {
+  --primary-color: white;
+  --secondary-color: black;
+  --third-color: rgba(248, 252, 252, 0.705);
+  --nav-color-inactive: invert(56%) sepia(0%) saturate(30%) hue-rotate(195deg)
+    brightness(90%) contrast(84%);
+  --nav-color-active: none;
+  --icon-color: none;
+}
+
+.dark-theme {
+  --primary-color: black;
+  --secondary-color: white;
+  --third-color: RGB(11, 12, 12);
+  --nav-color-inactive: invert(56%) sepia(0%) saturate(30%) hue-rotate(195deg)
+    brightness(90%) contrast(84%);
+  --nav-color-active: invert(100%) sepia(100%) saturate(0%) hue-rotate(233deg)
+    brightness(105%) contrast(102%);
+  --icon-color: invert(100%) sepia(100%) saturate(0%) hue-rotate(233deg)
+    brightness(105%) contrast(102%);
 }
