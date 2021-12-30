@@ -67,7 +67,7 @@ p {
   width: 200px;
   height: 200px;
   border-radius: 25px;
-  background-color: #1976d2;
+  background-color: #1976d250;
   box-shadow: 2px 2px 3px #888888;
   transition-duration: 0.4s;
 }

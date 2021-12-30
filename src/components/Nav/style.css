@@ -3,7 +3,7 @@ nav {
   bottom: 0%;
   width: 100%;
   font-size: x-large;
-  height: 70px;
+  height: 50px;
   background-color: var(--primary-color);
   z-index: 10;
   box-shadow: 2px 2px 7px 01px rgba(0, 0, 0, 0.8);
@@ -24,16 +24,17 @@ nav li {
 nav ul {
   position: relative;
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   padding: 0;
+  margin: 0;
 }
 
 nav img {
   width: 30px;
   filter: var(--nav-color-inactive);
-  padding-bottom: 10px;
 }
 
 .active {
