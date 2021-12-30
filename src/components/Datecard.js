@@ -12,12 +12,21 @@ function Datecard({ todo }){
      
         {todo.date !== false && (
             <div className="carddate">
-                <p type="text">
+
+                <div style={{
+                    height:"40%"
+                }}> 
+                <p type="text" className="textdate">
                     {todo.date === false ? newDate : todo.date}
                 </p>
-                <p type="text">
+                </div>
+
+                <div>
+                <p type="text" className="titledate">
                     {todo.title === "" ? newTitle : todo.title}
                 </p>
+                </div>
+              
             </div>
           
         )}

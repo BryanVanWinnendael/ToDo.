@@ -63,10 +63,26 @@ p {
 }
 
 .carddate {
+  color: white;
   width: 200px;
   height: 200px;
-  background-color: white;
+  border-radius: 15px;
+  background-color: #1976d2;
   box-shadow: 5px 5px 8px #888888;
+}
+
+.textdate {
+  padding: 20px;
+  font-size: x-large;
+  font-weight: bold;
+  text-align: left;
+}
+
+.titledate {
+  padding: 20px;
+  font-size: large;
+  font-weight: bold;
+  text-align: left;
 }
 
 @media (min-width: 900px) {

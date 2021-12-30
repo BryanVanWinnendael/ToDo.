@@ -21,9 +21,6 @@ function Todo({ todo }){
       <p
         type="text"
         className="list"
-        // style={{
-        //   maxWidth:"300px"
-        // }}
       >
         {todo.title === "" ? newTitle : todo.title}
       </p>
