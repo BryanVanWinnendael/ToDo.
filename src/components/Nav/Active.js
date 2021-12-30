@@ -10,9 +10,10 @@ export default class Active extends React.Component {
     }
 
     setActive(params) {
-        this.setState({
+        this.state = {
             active: params
-      });
+          }
+    
 
     }
 
