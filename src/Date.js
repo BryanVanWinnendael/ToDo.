@@ -22,7 +22,9 @@ function Date() {
     }, []);
 
     return (
-        <div>
+        <div style={{
+            marginTop:"35px"
+          }}>
              {todoList
             ? todoList.map((todo, index) => <Datecard todo={todo} key={index} />)
             : ""}

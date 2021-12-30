@@ -6,7 +6,9 @@ export default function Header() {
             zIndex:"10",
             width:"100%",
             height:"30px",
-            backgroundColor:"#1976d2"
+            backgroundColor:"#1976d2",
+            position:"fixed",
+          
         }}>
             
         </div>

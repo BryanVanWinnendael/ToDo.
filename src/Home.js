@@ -10,7 +10,9 @@ function Home() {
   return (
    
    
-      <div className="card">
+      <div className="card" style={{
+        marginTop:"35px"
+      }}>
       
         
        

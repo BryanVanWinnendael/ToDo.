@@ -64,18 +64,18 @@ p {
 
 .carddate {
   color: white;
-  width: 200px;
-  height: 170px;
+  width: 180px;
+  height: 150px;
   border-radius: 25px;
-  background-color: #5897d6;
+  background: linear-gradient(to bottom, #1976d2 0%, #5ba5f0 100%);
   box-shadow: 2px 2px 3px #888888;
   transition-duration: 0.4s;
 }
 
 .carddate2 {
   color: white;
-  width: 200px;
-  height: 170px;
+  width: 180px;
+  height: 150px;
   border-radius: 25px;
   background-color: #d65858;
   box-shadow: 2px 2px 3px #888888;
@@ -92,9 +92,15 @@ p {
 
 .textdate {
   padding: 20px;
-  font-size: x-large;
+  font-size: large;
   font-weight: bold;
   text-align: left;
+}
+
+.dateicon {
+  filter: invert(100%) sepia(0%) saturate(7477%) hue-rotate(44deg)
+    brightness(108%) contrast(106%);
+  width: 30px;
 }
 
 .titledate {
