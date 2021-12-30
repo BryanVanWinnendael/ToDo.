@@ -3,23 +3,13 @@ import firebase from "../util/firebase";
 import { Button } from '@mui/material';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
-import MobileDatePicker from '@mui/lab/MobileDatePicker';
-import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
-import FormGroup from '@mui/material/FormGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-
-
 import CalendarPicker from '@mui/lab/CalendarPicker';
-import MonthPicker from '@mui/lab/MonthPicker';
-import YearPicker from '@mui/lab/YearPicker';
 import Grid from '@mui/material/Grid';
-const minDate = new Date('2020-01-01T00:00:00.000');
-const maxDate = new Date('2034-01-01T00:00:00.000');
+
 function TodoForm(){
   const [title, setTitle] = useState("");
-  const [date, setDate] = React.useState();
+  const [date, setDate] = React.useState(null);
 
   const handleChange = (e) => {
       setTitle(e.target.value);
@@ -27,13 +17,30 @@ function TodoForm(){
     
   const createTodo = (event) => {
       event.preventDefault();
+      
       const todoRef = firebase.database().ref("Todo");
-      const todo = {
-        title,
-        complete: false,
-      };
+      var todo = {}
+      console.log(date)
+      const test = date
+      console.log(test)
+      if(date === null){
+        todo = {
+          title,
+          complete: false,
+          date: false
+        };
+      }
+      else{
+        todo = {
+          title,
+          complete: false,
+          date:convertDate(date)
+        };
+      }
+     
       todoRef.push(todo);
       setTitle("");   
+      setDate(null)
     };
     
   function convertDate(dateString) {
@@ -65,11 +72,12 @@ function TodoForm(){
       
 
         <div>
-          <TextField id="standard-basic" label="Standard" variant="standard" label="Add task"
+          <TextField id="standard-basic"  variant="standard" label="Add task"
           type="text"
           onChange={handleChange}  
           value={title} 
           name="task"
+          required
           />
           <Button variant="contained" type="submit" style={{
             margin:"10px",

@@ -3,8 +3,6 @@ import './App.css';
 import Home from "./Home"
 import Nav from "./components/Nav/Nav";
 import {useActive} from './components/Nav/Active';
-// import DateAdapter from '@mui/lab/AdapterDateFns';
-import {Route} from 'react-router-dom'
 import Date from "./Date";
 
 

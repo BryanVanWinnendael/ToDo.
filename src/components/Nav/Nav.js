@@ -1,4 +1,4 @@
-import React, { useState,useRef } from "react";
+import React from "react";
 import homeimg from './img/home.svg';
 import dateimg from './img/calender.svg';
 import './style.css';
@@ -17,7 +17,7 @@ class Nav extends React.Component {
       
 
     handleCheck(e) {
-        if(e.target.id == "homeId") {
+        if(e.target.id === "homeId") {
             useActive.setActive("home")
             this.setState(prevState => ({
                 active:useActive.getActive() 
@@ -43,24 +43,15 @@ class Nav extends React.Component {
     
             <ul>
                 <li id="idHome" onClick={this.handleCheck.bind(this)}>
-                    <a onClick={this.props.toggleProjects}>
-                        <img src={homeimg}  className={
-                    this.state.active == "home" &&(
-                        "active"
-                )} id="homeId"/>
-                    </a>
+                    <div onClick={this.props.toggleProjects}>
+                        <img src={homeimg}  className={this.state.active === "home" ? "active": ""} id="homeId" alt="home"/>
+                    </div>
                 </li>
 
-                <li onClick={this.handleCheck.bind(this)} className={
-                    this.state.active == "date" &&(
-                        "active"
-                )}>
-                    <a onClick={this.props.toggleProjects}>
-                        <img src={dateimg}  className={
-                    this.state.active == "date" &&(
-                        "active"
-                )}  id="dateId"/>
-                    </a>
+                <li onClick={this.handleCheck.bind(this)}>
+                    <div onClick={this.props.toggleProjects}>
+                        <img src={dateimg}  className={this.state.active === "date" ? "active": ""}  id="dateId" alt="dates"/>
+                    </div>
                 </li>
         
             </ul>
