@@ -40,3 +40,7 @@ nav img {
 .active {
   filter: var(--nav-color-active);
 }
+
+.iconmode {
+  width: 30px;
+}

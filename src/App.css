@@ -65,14 +65,28 @@ p {
 .carddate {
   color: white;
   width: 200px;
-  height: 200px;
+  height: 170px;
   border-radius: 25px;
-  background-color: #1976d250;
+  background-color: #5897d6;
+  box-shadow: 2px 2px 3px #888888;
+  transition-duration: 0.4s;
+}
+
+.carddate2 {
+  color: white;
+  width: 200px;
+  height: 170px;
+  border-radius: 25px;
+  background-color: #d65858;
   box-shadow: 2px 2px 3px #888888;
   transition-duration: 0.4s;
 }
 
 .carddate:hover {
+  transform: scale(1.1);
+}
+
+.carddate2:hover {
   transform: scale(1.1);
 }
 

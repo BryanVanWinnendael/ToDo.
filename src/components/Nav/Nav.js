@@ -1,6 +1,8 @@
 import React from "react";
-import homeimg from './img/home.svg';
-import dateimg from './img/calender.svg';
+import homeimg from './img/home.png';
+import dateimg from './img/date.png';
+import dark from './img/dark.png';
+import light from './img/light.png';
 import './style.css';
 import {useActive} from './Active';
 
@@ -9,7 +11,8 @@ class Nav extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-          active:useActive.getActive() 
+          active:useActive.getActive(),
+          icon: dark 
         }
     }
     
@@ -34,27 +37,44 @@ class Nav extends React.Component {
        
     }
 
+    changeicon(e){
+        console.log("change")
+       if(this.state.icon === dark) {
+           this.setState({icon:light})
+       }
+       else{
+        this.setState({icon:dark})
+       }
+    }
 
+  
     render(){
-
+      
 
     return (
         <nav id="navId">
     
             <ul>
-                <li id="idHome" onClick={this.handleCheck.bind(this)}>
-                    <div onClick={this.props.toggleProjects} style={{
+                <li id="idHome" >
+                    <div onClick={this.handleCheck.bind(this)} style={{
                         cursor:"pointer"
                     }}>
-                        <img src={homeimg}  className={this.state.active === "home" ? "active": ""} id="homeId" alt="home"/>
+                        <img src={homeimg} onClick={this.props.toggleProjects} className={this.state.active === "home" ? "active": ""} id="homeId" alt="home"/>
                     </div>
                 </li>
 
-                <li onClick={this.handleCheck.bind(this)}>
-                    <div onClick={this.props.toggleProjects} style={{
+                <li>
+                    <div class="iconmode" onClick={this.changeicon.bind(this)}>
+                        <img src={this.state.icon} id="iconmode" alt="mode"/> 
+                    </div>
+                </li>
+               
+
+                <li >
+                    <div onClick={this.handleCheck.bind(this)} style={{
                         cursor:"pointer"
                     }}>
-                        <img src={dateimg}  className={this.state.active === "date" ? "active": ""}  id="dateId" alt="dates"/>
+                        <img src={dateimg} onClick={this.props.toggleProjects}  className={this.state.active === "date" ? "active": ""}  id="dateId" alt="dates"/>
                     </div>
                 </li>
         
