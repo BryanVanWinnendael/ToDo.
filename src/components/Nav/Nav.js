@@ -43,13 +43,17 @@ class Nav extends React.Component {
     
             <ul>
                 <li id="idHome" onClick={this.handleCheck.bind(this)}>
-                    <div onClick={this.props.toggleProjects}>
+                    <div onClick={this.props.toggleProjects} style={{
+                        cursor:"pointer"
+                    }}>
                         <img src={homeimg}  className={this.state.active === "home" ? "active": ""} id="homeId" alt="home"/>
                     </div>
                 </li>
 
                 <li onClick={this.handleCheck.bind(this)}>
-                    <div onClick={this.props.toggleProjects}>
+                    <div onClick={this.props.toggleProjects} style={{
+                        cursor:"pointer"
+                    }}>
                         <img src={dateimg}  className={this.state.active === "date" ? "active": ""}  id="dateId" alt="dates"/>
                     </div>
                 </li>

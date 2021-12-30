@@ -66,9 +66,14 @@ p {
   color: white;
   width: 200px;
   height: 200px;
-  border-radius: 15px;
+  border-radius: 25px;
   background-color: #1976d2;
-  box-shadow: 5px 5px 8px #888888;
+  box-shadow: 2px 2px 3px #888888;
+  transition-duration: 0.4s;
+}
+
+.carddate:hover {
+  transform: scale(1.1);
 }
 
 .textdate {
@@ -81,7 +86,6 @@ p {
 .titledate {
   padding: 20px;
   font-size: large;
-  font-weight: bold;
   text-align: left;
 }
 
