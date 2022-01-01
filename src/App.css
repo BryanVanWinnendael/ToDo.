@@ -61,62 +61,14 @@ p {
 
 .carddate {
   color: white;
-  width: 180px;
-  height: 150px;
+  width: 170px;
+  height: 120px;
   border-radius: 15px;
-  background: linear-gradient(to bottom, #1976d2 0%, #5ba5f0 100%);
-  /* box-shadow: 2px 2px 3px #888888; */
+
+  /* background: linear-gradient(to bottom, #1976d2 0%, #5ba5f0 100%); */
+  background-color: #1976d2;
   transition-duration: 0.4s;
 }
-/* .css-1480iag-MuiInputBase-root-MuiInput-root:before {
-  border-bottom: 1px solid var(--text-color) !important;
-}
-.css-1x51dt5-MuiInputBase-input-MuiInput-input {
-  color: var(--text-color) !important;
-}
-.css-bkrceb-MuiButtonBase-root-MuiPickersDay-root {
-  background-color: transparent !important;
-  color: var(--text-color) !important;
-}
-
-.css-bkrceb-MuiButtonBase-root-MuiPickersDay-root.Mui-selected:hover {
-  will-change: background-color;
-  background-color: #1976d2 !important;
-  color: white !important;
-}
-
-.css-195y93z-MuiButtonBase-root-MuiPickersDay-root {
-  background-color: transparent !important;
-}
-
-.css-195y93z-MuiButtonBase-root-MuiPickersDay-root:not(.Mui-selected) {
-  border: 1px solid var(--text-color) !important;
-}
-.css-195y93z-MuiButtonBase-root-MuiPickersDay-root {
-  color: var(--text-color) !important;
-}
-
-.css-195y93z-MuiButtonBase-root-MuiPickersDay-root.Mui-selected:hover {
-  will-change: background-color !important;
-  background-color: #1565c0 !important;
-  color: white !important;
-}
-
-.css-1w13o7u-MuiTypography-root {
-  color: var(--text-color) !important;
-}
-
-.css-l0iinn {
-  color: var(--text-color) !important;
-}
-
-.css-fd2y78-MuiSvgIcon-root {
-  color: var(--text-color) !important;
-}
-
-.css-i4bv87-MuiSvgIcon-root {
-  fill: var(--text-color) !important;
-} */
 
 .carddate:hover {
   transform: scale(1.1);

@@ -40,9 +40,7 @@ const useStyles = makeStyles({
       borderBottomColor: "var(--text-color)"
     }, 
     // calendar
-    "& .css-195y93z-MuiButtonBase-root-MuiPickersDay-root:not(.Mui-selected)":{
-      border: "1px solid var(--text-color)"
-    },
+   
     "& .css-l0iinn":{
       color:"var(--text-color)",
     },
@@ -57,8 +55,8 @@ const useStyles = makeStyles({
     "& span":{
       color:"var(--text-color)",
     },
-    "& button:not":{
-      border:"1px solid var(--text-color)"
+    "& .css-195y93z-MuiButtonBase-root-MuiPickersDay-root:not(.Mui-selected)":{
+      border:"1px solid var(--text-color) !important"
     }
 
    
@@ -132,7 +130,8 @@ function TodoForm(){
 
         <div style={{
           display:"flex",
-          flexDirection:"column"
+          flexDirection:"column",
+         
         }}>
           <TextField id="standard-basic"  variant="standard" label="Add task"
           type="text"
