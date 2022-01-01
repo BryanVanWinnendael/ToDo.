@@ -5,9 +5,9 @@ import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import TextField from '@mui/material/TextField';
 import CalendarPicker from '@mui/lab/CalendarPicker';
-import Grid from '@mui/material/Grid';
 
-import { jsx as _jsx } from "react/jsx-runtime";
+
+
 function TodoForm(){
   const [title, setTitle] = useState("");
   const [date, setDate] = React.useState(null);
@@ -21,9 +21,7 @@ function TodoForm(){
       
       const todoRef = firebase.database().ref("Todo");
       var todo = {}
-      console.log(date)
-      const test = date
-      console.log(test)
+     
       if(date === null){
         todo = {
           title,
@@ -49,12 +47,7 @@ function TodoForm(){
       return date.getDate()+"/"+(date.getMonth() + 1)+"/"+date.getFullYear();
   }
 
-  const styles = theme => ({
-    notchedOutline: {
-      borderWidth: "1px",
-      borderColor: "yellow !important"
-    }
-  });
+ 
   return(
         <form onSubmit={createTodo} >
         

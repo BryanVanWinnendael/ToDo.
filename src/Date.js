@@ -3,14 +3,11 @@ import Datecard from './components/Datecard'
 import firebase from "firebase";
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
-import TextField from '@mui/material/TextField';
 import CalendarPicker from '@mui/lab/CalendarPicker';
-import Grid from '@mui/material/Grid';
-import MobileDatePicker from '@mui/lab/MobileDatePicker';
 function Date() {
 
     const [todoList, setTodoList] = useState();
-    const [calendarType, setCalendarType] = React.useState('week');
+    
     const [date, setDate] = React.useState(null);
     useEffect(() => {
         const todoRef = firebase.database().ref("Todo");
@@ -26,9 +23,7 @@ function Date() {
      
         });
     }, []);
-    const onChange = (date) => {
-        console.log(date.toString());
-      };
+   
 
     return (
         <div style={{
