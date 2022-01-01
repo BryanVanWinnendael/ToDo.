@@ -40,44 +40,24 @@ const useStyles = makeStyles({
       borderBottomColor: "var(--text-color)"
     }, 
     // calendar
-    // "& .MuiCalendarPicker-viewTransitionContainer":{
-    //   color:"var(--text-color)"
-    // },
-    // "& .MuiCalendarPicker-viewTransitionContainer .css-bkrceb-MuiButtonBase-root-MuiPickersDay-root":{
-    //   color:"var(--text-color)",
-    //   backgroundColor:"transparent"
-
-    // },
-    // "& .css-195y93z-MuiButtonBase-root-MuiPickersDay-root":{
-    //   color:"var(--text-color)",
-    //   backgroundColor:"transparent !important"
-    // },
     "& .css-195y93z-MuiButtonBase-root-MuiPickersDay-root:not(.Mui-selected)":{
       border: "1px solid var(--text-color)"
     },
     "& .css-l0iinn":{
       color:"var(--text-color)",
     },
-    // "& .css-fd2y78-MuiSvgIcon-root":{
-    //   fill:"var(--text-color)",
-    // },
-    // "& .css-i4bv87-MuiSvgIcon-root":{
-    //   fill:"var(--text-color)",
-    // },
-    // "& .css-1w13o7u-MuiTypography-root":{
-    //   color:"var(--text-color)",
-    // }
     "& svg":{
       fill:"var(--text-color)",
     },
     "& button":{
       backgroundColor:"transparent",
       color:"var(--text-color)",
+      
     },
     "& span":{
       color:"var(--text-color)",
     },
-    "& button .css-wed0tz:not(.Mui-selected)":{
+    "& button:not":{
       border:"1px solid var(--text-color)"
     }
 
@@ -150,7 +130,10 @@ function TodoForm(){
         </div>
       
 
-        <div >
+        <div style={{
+          display:"flex",
+          flexDirection:"column"
+        }}>
           <TextField id="standard-basic"  variant="standard" label="Add task"
           type="text"
           onChange={handleChange}  
@@ -163,7 +146,7 @@ function TodoForm(){
           
           />
           <Button variant="contained" type="submit" style={{
-            margin:"10px",
+            marginTop:"10px",
           }} startIcon={
             <svg
             width="24"
