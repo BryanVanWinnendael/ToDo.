@@ -37,7 +37,6 @@ function Datepage() {
     const classes = useStyles();
     const [todoList, setTodoList] = useState();
     const [date, setDate] = React.useState(null);
-    const [copylist, setCopylist] = useState();
     const [check,setCheck]= useState(false);
 
     useEffect(() => {
@@ -55,7 +54,7 @@ function Datepage() {
         else{
             setCheck(false)
         }
-        setCopylist(todoList);
+ 
         setTodoList(todoList);
      
         });
@@ -73,7 +72,7 @@ function Datepage() {
         resetFilter()
         const box = document.getElementsByClassName("carddate")
         for(var i of box){
-           if(i.getElementsByClassName("textdate")[0].innerHTML != convertDate(dategiven)){
+           if(i.getElementsByClassName("textdate")[0].innerHTML !== convertDate(dategiven)){
                i.style.display = "none"
            }
         }
