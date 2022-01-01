@@ -9,11 +9,11 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
   root: {
-    // input label when focused
+
     "& .MuiInputLabel-root": {
       color: "var(--text-color)"
     },
-    // focused color for input with variant='standard'
+    
     "& .MuiInput-underline:before": {
       borderBottomColor: "var(--text-color)"
     },
@@ -23,6 +23,34 @@ const useStyles = makeStyles({
     },
     "& .MuiInput-root:hover:not(.Mui-disabled):before":{
       borderBottomColor: "var(--text-color)"
+    }, 
+    // calendar
+    "& .MuiCalendarPicker-viewTransitionContainer":{
+      color:"var(--text-color)"
+    },
+    "& .css-bkrceb-MuiButtonBase-root-MuiPickersDay-root":{
+      color:"var(--text-color)",
+      backgroundColor:"transparent"
+
+    },
+    "& .css-195y93z-MuiButtonBase-root-MuiPickersDay-root":{
+      color:"var(--text-color)",
+      backgroundColor:"transparent"
+    },
+    "& .css-195y93z-MuiButtonBase-root-MuiPickersDay-root:not(.Mui-selected)":{
+      border: "1px solid var(--text-color)"
+    },
+    "& .css-l0iinn":{
+      color:"var(--text-color)",
+    },
+    "& .css-fd2y78-MuiSvgIcon-root":{
+      fill:"var(--text-color)",
+    },
+    "& .css-i4bv87-MuiSvgIcon-root":{
+      fill:"var(--text-color)",
+    },
+    "& .css-1w13o7u-MuiTypography-root":{
+      color:"var(--text-color)",
     }
    
    
@@ -75,8 +103,8 @@ function TodoForm(){
         
        
         <div>
-          <LocalizationProvider dateAdapter={AdapterDateFns} >
-                <CalendarPicker date={date} onChange={(newDate) =>setDate(newDate)} />
+          <LocalizationProvider dateAdapter={AdapterDateFns}>
+                <CalendarPicker date={date} onChange={(newDate) =>setDate(newDate)} className={classes.root}/>
           </LocalizationProvider>
           {date && (
             <p style={{
