@@ -7,6 +7,7 @@ import TextField from '@mui/material/TextField';
 import CalendarPicker from '@mui/lab/CalendarPicker';
 import Grid from '@mui/material/Grid';
 
+import { jsx as _jsx } from "react/jsx-runtime";
 function TodoForm(){
   const [title, setTitle] = useState("");
   const [date, setDate] = React.useState(null);
@@ -48,17 +49,19 @@ function TodoForm(){
       return date.getDate()+"/"+(date.getMonth() + 1)+"/"+date.getFullYear();
   }
 
+  const styles = theme => ({
+    notchedOutline: {
+      borderWidth: "1px",
+      borderColor: "yellow !important"
+    }
+  });
   return(
         <form onSubmit={createTodo} >
         
        
-        <div className="datepicker">
+        <div>
           <LocalizationProvider dateAdapter={AdapterDateFns} >
-            <Grid container spacing={3}>
-              <Grid item xs={12} md={6}>
                 <CalendarPicker date={date} onChange={(newDate) =>setDate(newDate)} />
-              </Grid>
-            </Grid>
           </LocalizationProvider>
           {date && (
             <p style={{
@@ -71,13 +74,17 @@ function TodoForm(){
         </div>
       
 
-        <div>
+        <div >
           <TextField id="standard-basic"  variant="standard" label="Add task"
           type="text"
           onChange={handleChange}  
           value={title} 
           name="task"
           required
+          sx={{ label: { color: 'var(--text-color)' } }}
+      
+         
+          
           />
           <Button variant="contained" type="submit" style={{
             margin:"10px",

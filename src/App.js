@@ -22,8 +22,23 @@ export default class App extends React.Component {
     }))
 }
 
+  
+
 render(){
   const { currentView } = this.state;
+  console.log(localStorage.getItem("theme"))
+  if(localStorage.getItem("theme") === null){
+    localStorage.setItem("theme","lightmode")
+  }
+
+  if(localStorage.getItem("theme") === "darkmode") {
+    document.body.classList.add("dark-theme")
+  }
+
+  if(localStorage.getItem("theme") === "lightmode") {
+    document.body.classList.remove("dark-theme")
+  }
+
   return (
     <div className="App">
         <Header/>

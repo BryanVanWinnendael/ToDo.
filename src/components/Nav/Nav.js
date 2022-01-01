@@ -1,8 +1,8 @@
 import React from "react";
 import homeimg from './img/home.png';
 import dateimg from './img/date.png';
-import dark from './img/dark.png';
-import light from './img/light.png';
+import darkmode from './img/dark.png';
+import lightmode from './img/light.png';
 import './style.css';
 import {useActive} from './Active';
 
@@ -12,7 +12,7 @@ class Nav extends React.Component {
         super(props);
         this.state = {
           active:useActive.getActive(),
-          icon: dark 
+          icon:  localStorage.getItem("theme") === "lightmode" ? darkmode: lightmode
         }
     }
     
@@ -38,20 +38,28 @@ class Nav extends React.Component {
     }
 
     changeicon(e){
-        console.log("change")
-       if(this.state.icon === dark) {
-           this.setState({icon:light})
+     
+       if(localStorage.getItem("theme") == null ||localStorage.getItem("theme") === "lightmode") {
+            document.body.classList.add("dark-theme")
+            localStorage.setItem("theme","darkmode")
+           this.setState({icon:lightmode})
        }
        else{
-        this.setState({icon:dark})
+        document.body.classList.remove("dark-theme")
+        localStorage.setItem("theme","lightmode")
+        this.setState({icon:darkmode})
        }
     }
+
 
   
     render(){
       
 
     return (
+
+
+
         <nav id="navId">
     
             <ul>

@@ -16,18 +16,18 @@ code {
 }
 
 :root {
-  --primary-color: white;
+  --text-color: black;
+  --bg-color: white;
   --secondary-color: black;
   --third-color: rgba(248, 252, 252, 0.705);
   --nav-color-inactive: invert(56%) sepia(0%) saturate(30%) hue-rotate(195deg)
     brightness(90%) contrast(84%);
   --nav-color-active: none;
-  --icon-color: none;
 }
 
 .dark-theme {
-  --primary-color: black;
-  --secondary-color: white;
+  --text-color: white;
+  --bg-color: #26282b;
   --third-color: RGB(11, 12, 12);
   --nav-color-inactive: invert(56%) sepia(0%) saturate(30%) hue-rotate(195deg)
     brightness(90%) contrast(84%);
