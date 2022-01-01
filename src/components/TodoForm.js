@@ -6,6 +6,21 @@ import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import TextField from '@mui/material/TextField';
 import CalendarPicker from '@mui/lab/CalendarPicker';
 import { makeStyles } from "@material-ui/core/styles";
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+const theme = createTheme({
+  components: {
+    // Name of the component
+    CalendarPicker: {
+      styleOverrides: {
+        // Name of the slot
+        "&css-bkrceb-MuiButtonBase-root-MuiPickersDay-root": {
+          // Some CSS
+          fontSize: '10rem',
+        },
+      },
+    },
+  },
+});
 
 const useStyles = makeStyles({
   root: {
@@ -35,7 +50,7 @@ const useStyles = makeStyles({
     },
     "& .css-195y93z-MuiButtonBase-root-MuiPickersDay-root":{
       color:"var(--text-color)",
-      backgroundColor:"transparent"
+      backgroundColor:"transparent !important"
     },
     "& .css-195y93z-MuiButtonBase-root-MuiPickersDay-root:not(.Mui-selected)":{
       border: "1px solid var(--text-color)"
@@ -103,8 +118,12 @@ function TodoForm(){
         
        
         <div>
+       
           <LocalizationProvider dateAdapter={AdapterDateFns}>
+          <ThemeProvider theme={theme}>
                 <CalendarPicker date={date} onChange={(newDate) =>setDate(newDate)} className={classes.root}/>
+          </ThemeProvider>
+
           </LocalizationProvider>
           {date && (
             <p style={{
