@@ -72,7 +72,7 @@ class Nav extends React.Component {
                 </li>
 
                 <li>
-                    <div class="iconmode" onClick={this.changeicon.bind(this)}>
+                    <div class="iconmode" onClick={this.changeicon.bind(this)} >
                         <img src={this.state.icon} id="iconmode" alt="mode"/> 
                     </div>
                 </li>

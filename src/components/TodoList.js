@@ -27,7 +27,8 @@ function TodoList(){
      
         });
     }, []);
-    
+
+ 
     return (
         <ul className="boxList">
           {todoList
@@ -38,10 +39,14 @@ function TodoList(){
             <p style={{
                 color:"var(--text-color)"
             }}>Your task list is empty </p>
-            <p style={{
-                color:"var(--text-color)",
-                fontSize:"smaller"
-            }}>Add a new task to get started </p>
+           
+            <u style={{
+                color:"#1976d2",
+                fontSize:"smaller",
+                cursor:"pointer",
+                
+                
+            }} onClick={() =>  document.getElementById("inputtask").focus()}>Add a new task to get started </u>
             </div>
         )}
         </ul >

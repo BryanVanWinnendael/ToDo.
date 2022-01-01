@@ -110,6 +110,18 @@ function TodoForm(){
   function deletedate(){
     setDate(null)
   }
+
+  function setNewDate(dateGiven){
+    console.log(dateGiven)
+    console.log(date)
+
+    if(dateGiven === date){
+      setDate(null)
+    }
+    else{
+      setDate(dateGiven)
+    }
+  }
   
   return(
         <form onSubmit={createTodo} >
@@ -119,7 +131,7 @@ function TodoForm(){
        
           <LocalizationProvider dateAdapter={AdapterDateFns}>
           <ThemeProvider theme={theme}>
-                <CalendarPicker date={date} onChange={(newDate) =>setDate(newDate)} className={classes.root}/>
+                <CalendarPicker date={date} onChange={(newDate) =>setNewDate(newDate)} onClick={console.log("click")} className={classes.root}/>
           </ThemeProvider>
 
           </LocalizationProvider>
@@ -151,7 +163,7 @@ function TodoForm(){
           flexDirection:"column",
          
         }}>
-          <TextField id="standard-basic"  variant="standard" label="Add task"
+          <TextField id="inputtask"  variant="standard" label="Add task"
           type="text"
           onChange={handleChange}  
           value={title} 
