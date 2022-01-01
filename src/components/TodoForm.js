@@ -76,7 +76,11 @@ const useStyles = makeStyles({
     },
     "& span":{
       color:"var(--text-color)",
+    },
+    "& button .css-wed0tz:not(.Mui-selected)":{
+      border:"1px solid var(--text-color)"
     }
+
    
    
   }
