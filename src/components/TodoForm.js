@@ -28,7 +28,7 @@ const useStyles = makeStyles({
     "& .MuiCalendarPicker-viewTransitionContainer":{
       color:"var(--text-color)"
     },
-    "& .css-bkrceb-MuiButtonBase-root-MuiPickersDay-root":{
+    "& .MuiCalendarPicker-viewTransitionContainer .css-bkrceb-MuiButtonBase-root-MuiPickersDay-root":{
       color:"var(--text-color)",
       backgroundColor:"transparent"
 
