@@ -7,6 +7,8 @@ import TextField from '@mui/material/TextField';
 import CalendarPicker from '@mui/lab/CalendarPicker';
 import { makeStyles } from "@material-ui/core/styles";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import Delete from "./delete.svg";
+
 const theme = createTheme({
   components: {
     // Name of the component
@@ -104,6 +106,10 @@ function TodoForm(){
       var date = new Date(dateString);
       return date.getDate()+"/"+(date.getMonth() + 1)+"/"+date.getFullYear();
   }
+
+  function deletedate(){
+    setDate(null)
+  }
   
   return(
         <form onSubmit={createTodo} >
@@ -118,11 +124,23 @@ function TodoForm(){
 
           </LocalizationProvider>
           {date && (
+            <div style={{
+              display:"flex",
+              alignItems:"center",
+              marginBottom:"20px"
+              
+            }}> 
+            <img src={Delete} className="x"  onClick={deletedate} alt="delete" style={{
+              width:"20px",
+           
+            }}/>
             <p style={{
               marginTop:"0",
               color:"#1976d2",
-              fontWeight:"bold"
+              fontWeight:"bold",
+              margin:"0"
             }}>Date picked: {convertDate(date)} </p>
+            </div>
           )}
         
         </div>

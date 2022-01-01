@@ -36,6 +36,7 @@ function Date() {
     const classes = useStyles();
     const [todoList, setTodoList] = useState();
     const [date, setDate] = React.useState(null);
+    const [check,setCheck]= useState(false);
 
     useEffect(() => {
         const todoRef = firebase.database().ref("Todo");
@@ -46,7 +47,12 @@ function Date() {
         for (let id in todos) {
             todoList.push({ id, ...todos[id] });
         }
-        
+        if(todoList.length === 0){
+            setCheck(true)
+        }
+        else{
+            setCheck(false)
+        }
         setTodoList(todoList);
      
         });
@@ -72,6 +78,15 @@ function Date() {
             {todoList
             ? todoList.map((todo, index) => <Datecard todo={todo} key={index} />)
             : ""}
+
+            {check && (
+            <div>
+            <p style={{
+                color:"var(--text-color)"
+            }}>Your task list is looking empty... </p>
+          
+            </div>
+            )}      
             </div>
  
         </div>
