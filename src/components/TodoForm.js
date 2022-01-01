@@ -52,12 +52,12 @@ const useStyles = makeStyles({
     //   color:"var(--text-color)",
     //   backgroundColor:"transparent !important"
     // },
-    // "& .css-195y93z-MuiButtonBase-root-MuiPickersDay-root:not(.Mui-selected)":{
-    //   border: "1px solid var(--text-color)"
-    // },
-    // "& .css-l0iinn":{
-    //   color:"var(--text-color)",
-    // },
+    "& .css-195y93z-MuiButtonBase-root-MuiPickersDay-root:not(.Mui-selected)":{
+      border: "1px solid var(--text-color)"
+    },
+    "& .css-l0iinn":{
+      color:"var(--text-color)",
+    },
     // "& .css-fd2y78-MuiSvgIcon-root":{
     //   fill:"var(--text-color)",
     // },
@@ -69,6 +69,13 @@ const useStyles = makeStyles({
     // }
     "& svg":{
       fill:"var(--text-color)",
+    },
+    "& button":{
+      backgroundColor:"transparent",
+      color:"var(--text-color)",
+    },
+    "& span":{
+      color:"var(--text-color)",
     }
    
    
