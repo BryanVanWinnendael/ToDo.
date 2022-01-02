@@ -6,29 +6,22 @@ import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import TextField from '@mui/material/TextField';
 import CalendarPicker from '@mui/lab/CalendarPicker';
 import { makeStyles } from "@material-ui/core/styles";
-// import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Delete from "./delete.svg";
-// import Chip from '@mui/material/Chip';
-// import Paper from '@mui/material/Paper';
+import Chip from '@mui/material/Chip';
+import Paper from '@mui/material/Paper';
+import { styled } from '@mui/material/styles';
 
-// const theme = createTheme({
-//   components: {
-//     // Name of the component
-//     CalendarPicker: {
-//       styleOverrides: {
-//         // Name of the slot
-//         "&css-bkrceb-MuiButtonBase-root-MuiPickersDay-root": {
-//           // Some CSS
-//           fontSize: '10rem',
-//         },
-//       },
-//     },
-//   },
-// });
 
-// const ListItem = styled('li')(({ theme }) => ({
-//   margin: theme.spacing(0.5),
-// }));
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogTitle from '@mui/material/DialogTitle';
+import { useTheme } from '@mui/material/styles';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 
 const useStyles = makeStyles({
   root: {
@@ -65,24 +58,91 @@ const useStyles = makeStyles({
     },
     "& .css-195y93z-MuiButtonBase-root-MuiPickersDay-root:not(.Mui-selected)":{
       border:"1px solid var(--text-color) !important"
+    },
+
+  
+   
+   
+  },
+  category:{
+    "& .css-1t1j96h-MuiPaper-root-MuiDialog-paper":{
+      width:"100%"
+    },
+    "& .css-1k430x0-MuiButtonBase-root-MuiChip-root .MuiChip-deleteIcon":{
+      fill:"var(--text-color)"
     }
 
-   
-   
   }
+
 });
+
+const ListItem = styled('li')(({ theme }) => ({
+  margin: theme.spacing(0.5),
+  width:"auto"
+
+}));
+
+const ITEM_HEIGHT = 48;
+const ITEM_PADDING_TOP = 8;
+const MenuProps = {
+  PaperProps: {
+    style: {
+      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+      width: 250,
+    },
+  },
+};
+
+const names = [
+  'Study',
+  'Ooo',
+  'Data',
+
+];
+
+function getStyles(name, personName, theme) {
+  return {
+    fontWeight:
+      personName.indexOf(name) === -1
+        ? theme.typography.fontWeightRegular
+        : theme.typography.fontWeightMedium,
+  };
+}
+
 
 function TodoForm(){
   const [title, setTitle] = useState("");
   // const [removedate, setRemovedate] = useState(false);
-
+  const theme = useTheme();
+  const [personName, setPersonName] = React.useState([]);
   const [date, setDate] = React.useState(null);
   const classes = useStyles();
-  
+  const [open, setOpen] = React.useState(false);
+  const [chipData, setChipData] = React.useState([]);
 
   const handleChange = (e) => {
       setTitle(e.target.value);
     };
+
+  const handleChangeCategory = (event) => {
+    const {
+      target: { value },
+    } = event;
+    setPersonName(
+      // On autofill we get a stringified value.
+      typeof value === 'string' ? value.split(',') : value,
+    );
+  };
+
+  const handleAdd = (e) => {
+    var res = []
+    for(var i of personName ){
+      res.push({key:res.length,label:i})
+    }
+    setChipData(res)
+    setOpen(false)
+   
+  }
     
   const createTodo = (event) => {
       event.preventDefault();
@@ -108,6 +168,7 @@ function TodoForm(){
       todoRef.push(todo);
       setTitle("");   
       setDate(null)
+      setPersonName([])
     };
     
   function convertDate(dateString) {
@@ -126,8 +187,31 @@ function TodoForm(){
       else{
         setDate(dateGiven)
       }
-    }
+  }
+
   
+
+  const handleDelete = (chipToDelete) => () => {
+    setChipData((chips) => chips.filter((chip) => chip.key !== chipToDelete.key));
+    const res = personName;
+    for(var i of res ){
+      if(i === chipToDelete.label){
+        var index = res.indexOf(i);
+        res.splice(index,1)
+      }
+      
+    }
+    setPersonName(res)
+  };
+
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
    
   
   
@@ -171,7 +255,7 @@ function TodoForm(){
           flexDirection:"column",
          
         }}>
-          <TextField id="inputtask"  variant="standard" label="Add task"
+          <TextField id="inputtask"  variant="standard" label="Add to do"
           type="text"
           onChange={handleChange}  
           value={title} 
@@ -201,6 +285,90 @@ function TodoForm(){
           }>
             Add
           </Button>
+        <div style={{
+          margin:"15px",
+       
+        }}>
+          <Button variant="contained" onClick={handleClickOpen}>
+            Add a category
+          </Button>
+          <Dialog open={open} onClose={handleClose} className={classes.category}>
+            <DialogTitle>Choose a category</DialogTitle>
+            <DialogContent>
+            
+              <div >
+                <FormControl sx={{ m: 1, width: "100%" }}>
+                  <InputLabel id="demo-multiple-name-label">Category</InputLabel>
+                  <Select
+                    labelId="demo-multiple-name-label"
+                    id="demo-multiple-name"
+                    multiple
+                    value={personName}
+                    onChange={handleChangeCategory}
+                    input={<OutlinedInput label="Name" />}
+                    MenuProps={MenuProps}
+                  >
+                    {names.map((name) => (
+                      <MenuItem
+                        key={name}
+                        value={name}
+                        style={getStyles(name, personName, theme)}
+                      >
+                        {name}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
+              </div>
+
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={handleClose}>Cancel</Button>
+              <Button onClick={handleAdd}>Add</Button>
+            </DialogActions>
+          </Dialog>
+        </div>
+
+          <Paper
+      sx={{
+        display: 'flex',
+        flexDirection:"row",
+        justifyContent: 'center',
+        flexWrap: 'wrap',
+        listStyle: 'none',
+        p: 0.5,
+        m: 0,
+        backgroundColor:"transparent",
+        color:"var(--text-color)",
+        width:"320px"
+
+      }}
+      component="ul"
+    >
+     
+      {chipData.length === 0 && (<p>No category chosen</p>)}
+
+      {chipData.map((data) => {
+        let icon;
+        return (
+          <ListItem key={data.key} style={{
+            display:"flex",
+            flexDirection:"row",
+           
+          }} className={classes.category}>
+            <Chip
+              style={{
+                color:"var(--text-color)",
+              
+              }}
+              icon={icon}
+              label={data.label}
+              onDelete={handleDelete(data)}
+            />
+          </ListItem>
+        );
+      })}
+    </Paper>
           </div>
        
         </form>
