@@ -5,14 +5,19 @@ import darkmode from './img/dark.png';
 import lightmode from './img/light.png';
 import './style.css';
 import {useActive} from './Active';
-
+import BottomNavigation from '@mui/material/BottomNavigation';
+import BottomNavigationAction from '@mui/material/BottomNavigationAction';
+import HomeIcon from '@mui/icons-material/Home';
+import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 class Nav extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
           active:useActive.getActive(),
-          icon:  localStorage.getItem("theme") === "lightmode" ? darkmode: lightmode
+          icon:  localStorage.getItem("theme") === "lightmode" ? darkmode: lightmode,
+          navvalue:'home'
         }
     }
     
@@ -36,19 +41,26 @@ class Nav extends React.Component {
         }
        
     }
-
-    changeicon(e){
+    // darkmode
+    // changeicon(e){
      
-       if(localStorage.getItem("theme") == null ||localStorage.getItem("theme") === "lightmode") {
-            document.body.classList.add("dark-theme")
-            localStorage.setItem("theme","darkmode")
-           this.setState({icon:lightmode})
-       }
-       else{
-        document.body.classList.remove("dark-theme")
-        localStorage.setItem("theme","lightmode")
-        this.setState({icon:darkmode})
-       }
+    //    if(localStorage.getItem("theme") == null ||localStorage.getItem("theme") === "lightmode") {
+    //         document.body.classList.add("dark-theme")
+    //         localStorage.setItem("theme","darkmode")
+    //        this.setState({icon:lightmode})
+    //    }
+    //    else{
+    //     document.body.classList.remove("dark-theme")
+    //     localStorage.setItem("theme","lightmode")
+    //     this.setState({icon:darkmode})
+    //    }
+    // }
+
+    handleChange(event,newVal){
+        useActive.setActive(newVal)
+        this.props.toggleProjects()
+        this.setState({navvalue:newVal})
+       
     }
 
 
@@ -58,36 +70,27 @@ class Nav extends React.Component {
 
     return (
 
+        <BottomNavigation sx={{ width: "100%" }} value={this.state.navvalue} onChange={this.handleChange.bind(this)} style={{
+            backgroundColor:"var(--bg-color)",
+            position:"fixed",
+            bottom:"0"
+        }}>
+        <BottomNavigationAction
+          label="Home"
+          value="home"
+          icon={<HomeIcon  />}
+        />
+        <BottomNavigationAction
+          label="Profile"
+          value="profile"
+          icon={<AccountCircleIcon />}
+        />
+        <BottomNavigationAction 
+        label="Calendar" 
+        value="date" 
+        icon={<CalendarTodayIcon />} />
+      </BottomNavigation>
 
-
-        <nav id="navId">
-    
-            <ul>
-                <li id="idHome" >
-                    <div onClick={this.handleCheck.bind(this)} style={{
-                        cursor:"pointer"
-                    }}>
-                        <img src={homeimg} onClick={this.props.toggleProjects} className={this.state.active === "home" ? "active": ""} id="homeId" alt="home"/>
-                    </div>
-                </li>
-
-                <li>
-                    <div class="iconmode" onClick={this.changeicon.bind(this)} >
-                        <img src={this.state.icon} id="iconmode" alt="mode"/> 
-                    </div>
-                </li>
-               
-
-                <li >
-                    <div onClick={this.handleCheck.bind(this)} style={{
-                        cursor:"pointer"
-                    }}>
-                        <img src={dateimg} onClick={this.props.toggleProjects}  className={this.state.active === "date" ? "active": ""}  id="dateId" alt="dates"/>
-                    </div>
-                </li>
-        
-            </ul>
-        </nav>
        
     )
 }

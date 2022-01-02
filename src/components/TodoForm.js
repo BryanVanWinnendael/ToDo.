@@ -8,21 +8,27 @@ import CalendarPicker from '@mui/lab/CalendarPicker';
 import { makeStyles } from "@material-ui/core/styles";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Delete from "./delete.svg";
+import Chip from '@mui/material/Chip';
+import Paper from '@mui/material/Paper';
 
-const theme = createTheme({
-  components: {
-    // Name of the component
-    CalendarPicker: {
-      styleOverrides: {
-        // Name of the slot
-        "&css-bkrceb-MuiButtonBase-root-MuiPickersDay-root": {
-          // Some CSS
-          fontSize: '10rem',
-        },
-      },
-    },
-  },
-});
+// const theme = createTheme({
+//   components: {
+//     // Name of the component
+//     CalendarPicker: {
+//       styleOverrides: {
+//         // Name of the slot
+//         "&css-bkrceb-MuiButtonBase-root-MuiPickersDay-root": {
+//           // Some CSS
+//           fontSize: '10rem',
+//         },
+//       },
+//     },
+//   },
+// });
+
+// const ListItem = styled('li')(({ theme }) => ({
+//   margin: theme.spacing(0.5),
+// }));
 
 const useStyles = makeStyles({
   root: {
@@ -68,6 +74,8 @@ const useStyles = makeStyles({
 
 function TodoForm(){
   const [title, setTitle] = useState("");
+  const [removedate, setRemovedate] = useState(false);
+
   const [date, setDate] = React.useState(null);
   const classes = useStyles();
   
@@ -112,16 +120,24 @@ function TodoForm(){
   }
 
   function setNewDate(dateGiven){
-    console.log(dateGiven)
-    console.log(date)
+      if(dateGiven === date){
+        setDate(null)
+      }
+      else{
+        setDate(dateGiven)
+      }
+    }
+  
+    
 
-    if(dateGiven === date){
-      setDate(null)
-    }
-    else{
-      setDate(dateGiven)
-    }
-  }
+  
+
+  function getMonthFromString(mon){
+    return new Date(Date.parse(mon +" 1, 2012")).getMonth()+1
+ }
+
+ 
+  
   
   return(
         <form onSubmit={createTodo} >
@@ -130,9 +146,9 @@ function TodoForm(){
         <div>
        
           <LocalizationProvider dateAdapter={AdapterDateFns}>
-          <ThemeProvider theme={theme}>
-                <CalendarPicker date={date} onChange={(newDate) =>setNewDate(newDate)} onClick={console.log("click")} className={classes.root}/>
-          </ThemeProvider>
+          {/* <ThemeProvider theme={theme}> */}
+                <CalendarPicker  date={date} onChange={(newDate) =>setNewDate(newDate)}  className={classes.root}/>
+          {/* </ThemeProvider> */}
 
           </LocalizationProvider>
           {date && (

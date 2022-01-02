@@ -27,7 +27,7 @@ code {
 
 .dark-theme {
   --text-color: white;
-  --bg-color: #26282b;
+  --bg-color: #141313;
   --third-color: RGB(11, 12, 12);
   --nav-color-inactive: invert(56%) sepia(0%) saturate(30%) hue-rotate(195deg)
     brightness(90%) contrast(84%);
