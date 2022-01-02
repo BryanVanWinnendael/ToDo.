@@ -6,10 +6,10 @@ import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import TextField from '@mui/material/TextField';
 import CalendarPicker from '@mui/lab/CalendarPicker';
 import { makeStyles } from "@material-ui/core/styles";
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+// import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Delete from "./delete.svg";
-import Chip from '@mui/material/Chip';
-import Paper from '@mui/material/Paper';
+// import Chip from '@mui/material/Chip';
+// import Paper from '@mui/material/Paper';
 
 // const theme = createTheme({
 //   components: {
@@ -74,7 +74,7 @@ const useStyles = makeStyles({
 
 function TodoForm(){
   const [title, setTitle] = useState("");
-  const [removedate, setRemovedate] = useState(false);
+  // const [removedate, setRemovedate] = useState(false);
 
   const [date, setDate] = React.useState(null);
   const classes = useStyles();
@@ -128,15 +128,7 @@ function TodoForm(){
       }
     }
   
-    
-
-  
-
-  function getMonthFromString(mon){
-    return new Date(Date.parse(mon +" 1, 2012")).getMonth()+1
- }
-
- 
+   
   
   
   return(

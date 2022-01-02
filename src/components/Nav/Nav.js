@@ -1,8 +1,4 @@
 import React from "react";
-import homeimg from './img/home.png';
-import dateimg from './img/date.png';
-import darkmode from './img/dark.png';
-import lightmode from './img/light.png';
 import './style.css';
 import {useActive} from './Active';
 import BottomNavigation from '@mui/material/BottomNavigation';
@@ -15,8 +11,6 @@ class Nav extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-          active:useActive.getActive(),
-          icon:  localStorage.getItem("theme") === "lightmode" ? darkmode: lightmode,
           navvalue:'home'
         }
     }
@@ -24,23 +18,23 @@ class Nav extends React.Component {
 
       
 
-    handleCheck(e) {
-        if(e.target.id === "homeId") {
-            useActive.setActive("home")
-            this.setState(prevState => ({
-                active:useActive.getActive() 
-            }))
+    // handleCheck(e) {
+    //     if(e.target.id === "homeId") {
+    //         useActive.setActive("home")
+    //         this.setState(prevState => ({
+    //             active:useActive.getActive() 
+    //         }))
 
-        }
+    //     }
 
-        else{
-            useActive.setActive("date")
-            this.setState(prevState => ({
-                active:useActive.getActive() 
-            }))
-        }
+    //     else{
+    //         useActive.setActive("date")
+    //         this.setState(prevState => ({
+    //             active:useActive.getActive() 
+    //         }))
+    //     }
        
-    }
+    // }
     // darkmode
     // changeicon(e){
      
