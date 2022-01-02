@@ -5,6 +5,8 @@ import Nav from "./components/Nav/Nav";
 import {useActive} from './components/Nav/Active';
 import Date from "./Date";
 import Header from "./components/Header";
+import Profile from "./Profile"
+
 
 export default class App extends React.Component {
   constructor(props) {
@@ -43,6 +45,7 @@ render(){
     <div className="App">
         <Header/>
         {currentView === 'home' && (<Home/>)}
+        {currentView === 'profile' && (<Profile/>)}
         {currentView === 'date' && (<Date/>)}
         <Nav toggleProjects={this.toggleShowProjects}/>
     </div>

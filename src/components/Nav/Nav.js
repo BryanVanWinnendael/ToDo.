@@ -1,5 +1,4 @@
 import React from "react";
-import './style.css';
 import {useActive} from './Active';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
@@ -11,49 +10,26 @@ class Nav extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-          navvalue:'home'
+          navvalue:'home',
+          fillhome: useActive.getActive() !== "home" ? "var(--text-color)" : "",
+          fillprofile: useActive.getActive() !== "profile" ? "var(--text-color)" : "",
+          fillcallendar: useActive.getActive() !== "date" ? "var(--text-color)" : "",
+
+
         }
     }
     
 
       
 
-    // handleCheck(e) {
-    //     if(e.target.id === "homeId") {
-    //         useActive.setActive("home")
-    //         this.setState(prevState => ({
-    //             active:useActive.getActive() 
-    //         }))
-
-    //     }
-
-    //     else{
-    //         useActive.setActive("date")
-    //         this.setState(prevState => ({
-    //             active:useActive.getActive() 
-    //         }))
-    //     }
-       
-    // }
-    // darkmode
-    // changeicon(e){
-     
-    //    if(localStorage.getItem("theme") == null ||localStorage.getItem("theme") === "lightmode") {
-    //         document.body.classList.add("dark-theme")
-    //         localStorage.setItem("theme","darkmode")
-    //        this.setState({icon:lightmode})
-    //    }
-    //    else{
-    //     document.body.classList.remove("dark-theme")
-    //     localStorage.setItem("theme","lightmode")
-    //     this.setState({icon:darkmode})
-    //    }
-    // }
-
     handleChange(event,newVal){
         useActive.setActive(newVal)
         this.props.toggleProjects()
         this.setState({navvalue:newVal})
+
+        this.setState({fillhome: useActive.getActive() !== "home" ? "var(--text-color)" : ""})
+        this.setState({fillprofile: useActive.getActive() !== "profile" ? "var(--text-color)" : ""})
+        this.setState({fillcallendar: useActive.getActive() !== "date" ? "var(--text-color)" : ""})
        
     }
 
@@ -67,22 +43,29 @@ class Nav extends React.Component {
         <BottomNavigation sx={{ width: "100%" }} value={this.state.navvalue} onChange={this.handleChange.bind(this)} style={{
             backgroundColor:"var(--bg-color)",
             position:"fixed",
-            bottom:"0"
+            bottom:"0",
+            boxShadow:"2px 2px 7px 01px rgba(0, 0, 0, 0.8)"
         }}>
         <BottomNavigationAction
           label="Home"
           value="home"
-          icon={<HomeIcon  />}
+          icon={<HomeIcon style={{
+            fill: this.state.fillhome
+        }}/>}
         />
         <BottomNavigationAction
           label="Profile"
           value="profile"
-          icon={<AccountCircleIcon />}
+          icon={<AccountCircleIcon style={{
+              fill: this.state.fillprofile
+          }}/>}
         />
         <BottomNavigationAction 
         label="Calendar" 
         value="date" 
-        icon={<CalendarTodayIcon />} />
+        icon={<CalendarTodayIcon style={{
+            fill: this.state.fillcallendar
+        }} />} />
       </BottomNavigation>
 
        
