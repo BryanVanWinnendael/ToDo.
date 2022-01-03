@@ -10,7 +10,7 @@ import Delete from "./delete.svg";
 import Chip from '@mui/material/Chip';
 import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
-
+import {useCategory} from "./Category";
 
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -66,11 +66,26 @@ const useStyles = makeStyles({
   },
   category:{
     "& .css-1t1j96h-MuiPaper-root-MuiDialog-paper":{
-      width:"100%"
+      width:"100%",
+      backgroundColor:"var(--bg-color)",
+      color:"var(--text-color)"
     },
     "& .css-1k430x0-MuiButtonBase-root-MuiChip-root .MuiChip-deleteIcon":{
       fill:"var(--text-color)"
+    },
+    "& .css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper":{
+      backgroundColor:"var(--bg-color)",
+      color:"var(--text-color)"
+    },
+    "& .css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper ":{
+      backgroundColor:"var(--bg-color)",
+
+    },
+    "& .css-hfutr2-MuiSvgIcon-root-MuiSelect-icon":{
+      fill:"var(--text-color)"
+
     }
+    
 
   }
 
@@ -89,16 +104,12 @@ const MenuProps = {
     style: {
       maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
       width: 250,
+      backgroundColor:"var(--bg-color)"
     },
   },
 };
 
-const names = [
-  'Study',
-  'Ooo',
-  'Data',
-
-];
+const names = useCategory.getCategories()
 
 function getStyles(name, personName, theme) {
   return {
@@ -106,6 +117,12 @@ function getStyles(name, personName, theme) {
       personName.indexOf(name) === -1
         ? theme.typography.fontWeightRegular
         : theme.typography.fontWeightMedium,
+    
+    color:
+      "var(--text-color)",
+
+    
+    
   };
 }
 
@@ -298,7 +315,9 @@ function TodoForm(){
             
               <div >
                 <FormControl sx={{ m: 1, width: "100%" }}>
-                  <InputLabel id="demo-multiple-name-label">Category</InputLabel>
+                  <InputLabel id="demo-multiple-name-label" style={{
+                    color:"var(--text-color)"
+                  }}>Category</InputLabel>
                   <Select
                     labelId="demo-multiple-name-label"
                     id="demo-multiple-name"
@@ -313,6 +332,7 @@ function TodoForm(){
                         key={name}
                         value={name}
                         style={getStyles(name, personName, theme)}
+                      
                       >
                         {name}
                       </MenuItem>
