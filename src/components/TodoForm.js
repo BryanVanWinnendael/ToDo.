@@ -11,7 +11,7 @@ import Chip from '@mui/material/Chip';
 import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
 import {useCategory} from "./Category";
-
+import DeleteIcon from '@mui/icons-material/Delete';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
@@ -84,10 +84,10 @@ const useStyles = makeStyles({
       fill:"var(--text-color)"
 
     },
-    "& .css-i4bv87-MuiSvgIcon-root":{
-      fill:"var(--text-color)"
+    // "& .css-i4bv87-MuiSvgIcon-root":{
+    //   fill:"var(--text-color)"
 
-    }
+    // }
 
     
 
@@ -383,6 +383,7 @@ function TodoForm(){
 
       {chipData.map((data) => {
         let icon;
+        
         return (
           <ListItem key={data.key} style={{
             display:"flex",
@@ -393,9 +394,11 @@ function TodoForm(){
             <Chip
               style={{
                 color:"var(--text-color)",
-              
+         
               }}
-              icon={icon}
+              deleteIcon={<DeleteIcon style={{
+                fill:"var(--text-color)"
+              }} />}
               label={data.label}
               onDelete={handleDelete(data)}
             />
