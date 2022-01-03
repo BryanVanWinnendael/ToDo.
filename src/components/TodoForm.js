@@ -69,9 +69,9 @@ const useStyles = makeStyles({
      
     //   color:"var(--text-color) !important"
     // },
-    "& .css-1k430x0-MuiButtonBase-root-MuiChip-root .MuiChip-deleteIcon":{
-      fill:"var(--text-color)"
-    },
+    // "& .css-1k430x0-MuiButtonBase-root-MuiChip-root .MuiChip-deleteIcon":{
+    //   fill:"var(--text-color)"
+    // },
     "& .css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper":{
       backgroundColor:"var(--bg-color)",
       color:"var(--text-color)"
@@ -83,7 +83,12 @@ const useStyles = makeStyles({
     "& .css-hfutr2-MuiSvgIcon-root-MuiSelect-icon":{
       fill:"var(--text-color)"
 
+    },
+    "& .css-i4bv87-MuiSvgIcon-root":{
+      fill:"var(--text-color)"
+
     }
+
     
 
   }
