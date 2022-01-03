@@ -66,9 +66,9 @@ const useStyles = makeStyles({
   },
   category:{
     "& .css-1t1j96h-MuiPaper-root-MuiDialog-paper":{
-      width:"100%",
-      backgroundColor:"var(--bg-color)",
-      color:"var(--text-color)"
+      width:"100% !important",
+      backgroundColor:"var(--bg-color) !important",
+      color:"var(--text-color) !important"
     },
     "& .css-1k430x0-MuiButtonBase-root-MuiChip-root .MuiChip-deleteIcon":{
       fill:"var(--text-color)"
@@ -309,12 +309,12 @@ function TodoForm(){
           <Button variant="contained" onClick={handleClickOpen}>
             Add a category
           </Button>
-          <Dialog open={open} onClose={handleClose} className={classes.category}>
-            <DialogTitle>Choose a category</DialogTitle>
-            <DialogContent>
+          <Dialog open={open} onClose={handleClose} className={classes.category} >
+            <DialogTitle >Choose a category</DialogTitle>
+            <DialogContent >
             
-              <div >
-                <FormControl sx={{ m: 1, width: "100%" }}>
+              <div>
+                <FormControl sx={{ m: 1, width: "100%"}}>
                   <InputLabel id="demo-multiple-name-label" style={{
                     color:"var(--text-color)"
                   }}>Category</InputLabel>
