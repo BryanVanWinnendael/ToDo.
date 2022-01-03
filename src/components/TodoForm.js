@@ -65,10 +65,10 @@ const useStyles = makeStyles({
    
   },
   category:{
-    "& .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input":{
+    // "& .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input":{
      
-      color:"var(--text-color) !important"
-    },
+    //   color:"var(--text-color) !important"
+    // },
     "& .css-1k430x0-MuiButtonBase-root-MuiChip-root .MuiChip-deleteIcon":{
       fill:"var(--text-color)"
     },
@@ -92,7 +92,8 @@ const useStyles = makeStyles({
 
 const ListItem = styled('li')(({ theme }) => ({
   margin: theme.spacing(0.5),
-  width:"auto"
+  width:"auto",
+
 
 }));
 
@@ -103,7 +104,7 @@ const MenuProps = {
     style: {
       maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
       width: 250,
-      backgroundColor:"var(--bg-color)"
+      backgroundColor:"var(--bg-color)",
     },
   },
 };
@@ -330,6 +331,9 @@ function TodoForm(){
                     value={personName}
                     onChange={handleChangeCategory}
                     input={<OutlinedInput label="Name" />}
+                    sx={{
+                      color:"var(--text-color)",
+                    }}
                     MenuProps={MenuProps}
                   >
                     {names.map((name) => (
@@ -337,7 +341,6 @@ function TodoForm(){
                         key={name}
                         value={name}
                         style={getStyles(name, personName, theme)}
-                      
                       >
                         {name}
                       </MenuItem>
@@ -379,6 +382,7 @@ function TodoForm(){
           <ListItem key={data.key} style={{
             display:"flex",
             flexDirection:"row",
+            color:"var(--text-color)"
            
           }} className={classes.category}>
             <Chip
