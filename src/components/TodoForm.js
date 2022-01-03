@@ -65,11 +65,11 @@ const useStyles = makeStyles({
    
   },
   category:{
-    "& .css-1t1j96h-MuiPaper-root-MuiDialog-paper":{
-      width:"100% !important",
-      backgroundColor:"var(--bg-color) !important",
-      color:"var(--text-color) !important"
-    },
+    // "& .css-1t1j96h-MuiPaper-root-MuiDialog-paper":{
+    //   width:"100% !important",
+    //   backgroundColor:"var(--bg-color) !important",
+    //   color:"var(--text-color) !important"
+    // },
     "& .css-1k430x0-MuiButtonBase-root-MuiChip-root .MuiChip-deleteIcon":{
       fill:"var(--text-color)"
     },
@@ -309,7 +309,13 @@ function TodoForm(){
           <Button variant="contained" onClick={handleClickOpen}>
             Add a category
           </Button>
-          <Dialog open={open} onClose={handleClose} className={classes.category} >
+          <Dialog open={open} onClose={handleClose} className={classes.category}  PaperProps={{
+              style: {
+                backgroundColor: 'var(--bg-color)',
+                color: 'var(--text-color)',
+                width:"100%"
+              },
+            }}>
             <DialogTitle >Choose a category</DialogTitle>
             <DialogContent >
             
