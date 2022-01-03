@@ -65,13 +65,6 @@ const useStyles = makeStyles({
    
   },
   category:{
-    // "& .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input":{
-     
-    //   color:"var(--text-color) !important"
-    // },
-    // "& .css-1k430x0-MuiButtonBase-root-MuiChip-root .MuiChip-deleteIcon":{
-    //   fill:"var(--text-color)"
-    // },
     "& .css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper":{
       backgroundColor:"var(--bg-color)",
       color:"var(--text-color)"
@@ -84,12 +77,10 @@ const useStyles = makeStyles({
       fill:"var(--text-color)"
 
     },
-    // "& .css-i4bv87-MuiSvgIcon-root":{
-    //   fill:"var(--text-color)"
+    "& .css-bpeome-MuiSvgIcon-root-MuiSelect-icon":{
+      fill:"var(--text-color)"
 
-    // }
-
-    
+    }  
 
   }
 
@@ -114,7 +105,20 @@ const MenuProps = {
   },
 };
 
-const names = useCategory.getCategories()
+var names = []
+
+
+export async function setNames(){
+  var arrayres = []
+  var res = await useCategory.getCategories()
+  const arr =  res.docs.map(doc => doc.data());
+  for(var i of arr){
+    arrayres.push(i.name)
+  }
+  names = arrayres
+}
+setNames()
+
 
 function getStyles(name, personName, theme) {
   return {
@@ -134,7 +138,6 @@ function getStyles(name, personName, theme) {
 
 function TodoForm(){
   const [title, setTitle] = useState("");
-  // const [removedate, setRemovedate] = useState(false);
   const theme = useTheme();
   const [personName, setPersonName] = React.useState([]);
   const [date, setDate] = React.useState(null);
@@ -142,6 +145,12 @@ function TodoForm(){
   const [open, setOpen] = React.useState(false);
   const [chipData, setChipData] = React.useState([]);
 
+
+  async function e(){
+    setNames()  
+  }
+  e()
+  
   const handleChange = (e) => {
       setTitle(e.target.value);
     };
@@ -151,7 +160,6 @@ function TodoForm(){
       target: { value },
     } = event;
     setPersonName(
-      // On autofill we get a stringified value.
       typeof value === 'string' ? value.split(',') : value,
     );
   };
@@ -163,7 +171,7 @@ function TodoForm(){
     }
     setChipData(res)
     setOpen(false)
-   
+
   }
     
   const createTodo = (event) => {
@@ -394,7 +402,7 @@ function TodoForm(){
             <Chip
               style={{
                 color:"var(--text-color)",
-         
+                backgroundColor:""
               }}
               deleteIcon={<DeleteIcon style={{
                 fill:"var(--text-color)"
