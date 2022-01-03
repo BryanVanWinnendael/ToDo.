@@ -382,7 +382,7 @@ function TodoForm(){
       {chipData.length === 0 && (<p>No category chosen</p>)}
 
       {chipData.map((data) => {
-        let icon;
+        // let icon;
         
         return (
           <ListItem key={data.key} style={{
