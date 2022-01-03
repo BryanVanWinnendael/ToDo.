@@ -65,11 +65,10 @@ const useStyles = makeStyles({
    
   },
   category:{
-    // "& .css-1t1j96h-MuiPaper-root-MuiDialog-paper":{
-    //   width:"100% !important",
-    //   backgroundColor:"var(--bg-color) !important",
-    //   color:"var(--text-color) !important"
-    // },
+    "& .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input":{
+     
+      color:"var(--text-color) !important"
+    },
     "& .css-1k430x0-MuiButtonBase-root-MuiChip-root .MuiChip-deleteIcon":{
       fill:"var(--text-color)"
     },
