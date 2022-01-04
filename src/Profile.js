@@ -5,6 +5,32 @@ import Switch from '@mui/material/Switch';
 import Chip from '@mui/material/Chip';
 import Paper from '@mui/material/Paper';
 import {useCategory} from "./components/Category";
+import DeleteIcon from '@mui/icons-material/Delete';
+import { Button } from '@mui/material';
+import TextField from '@mui/material/TextField';
+import { makeStyles } from "@material-ui/core/styles";
+
+
+const useStyles = makeStyles({
+  root: {
+
+    "& .MuiInputLabel-root": {
+      color: "var(--text-color)"
+    },
+    
+    "& .MuiInput-underline:before": {
+      borderBottomColor: "var(--text-color)"
+    },
+    
+    "& .MuiInput-input":{
+      color:"var(--text-color)"
+    },
+    "& .MuiInput-root:hover:not(.Mui-disabled):before":{
+      borderBottomColor: "var(--text-color)"
+    }, 
+  }
+
+});
 
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
     width: 62,
@@ -55,22 +81,34 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
     },
   }));
 
-const ListItem = styled('li')(({ theme }) => ({
-  margin: theme.spacing(0.5),
-}));
-
-
+  const ListItem = styled('li')(({ theme }) => ({
+    margin: theme.spacing(0.5),
+    width:"auto",
+  
+  
+  }));
 
 
 function Profile() {
-    const [mode,setMode] = useState(localStorage.getItem("theme"));
-
+  const [mode,setMode] = useState(localStorage.getItem("theme"));
+  const [title, setTitle] = useState("");
+  const classes = useStyles();
     
      
+  const handleChange = (e) => {
+    setTitle(e.target.value);
+  };
+
+  const onsubmit = (event) =>{
+    event.preventDefault();
+    setTitle("")
+    useCategory.addCategorie(title)
+  }
 
   
+  
 
-    async function e(){
+  async function e(){
       var res = []
       const snapshot = await useCategory.getCategories()
       const arr =  snapshot.docs.map(doc => doc.data());
@@ -125,15 +163,56 @@ function Profile() {
             />
               
             </div>
+
+            <div>
+            <form onSubmit={onsubmit} style={{
+          display:"flex",
+          flexDirection:"column",
+          }}>
+              <TextField id="inputtask"  variant="standard" label="Add category"
+              type="text"
+              onChange={handleChange}  
+              value={title} 
+              name="task"
+              required
+              className={classes.root}            
+              />
+              <Button variant="contained" type="submit" style={{
+                marginTop:"10px",
+              }} startIcon={
+                <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12 4C11.4477 4 11 4.44772 11 5V11H5C4.44772 11 4 11.4477 4 12C4 12.5523 4.44772 13 5 13H11V19C11 19.5523 11.4477 20 12 20C12.5523 20 13 19.5523 13 19V13H19C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11H13V5C13 4.44772 12.5523 4 12 4Z"
+                    fill="currentColor"
+                  />
+                </svg>
+
+              }>
+                Add
+              </Button>
+            </form>
+          </div>
+
             <div>
             <Paper
       sx={{
         display: 'flex',
+        flexDirection:"row",
         justifyContent: 'center',
         flexWrap: 'wrap',
         listStyle: 'none',
         p: 0.5,
-        m: 0,
+        m: 2,
+        backgroundColor:"transparent",
+        color:"var(--text-color)",
+        width:"320px"
+
       }}
       component="ul"
     >
@@ -142,11 +221,26 @@ function Profile() {
 
 
         return (
-          <ListItem key={data.key}>
+          <ListItem key={data.key}
+          style={{
+            display:"flex",
+            flexDirection:"row",
+            color:"var(--text-color)"
+           
+          }}
+          >
             <Chip
-             
+              sx={{
+                color:"var(--text-color)",
+                fill:"var(--text-color)"
+                
+                
+              }}
+              deleteIcon={<DeleteIcon style={{
+                fill:"var(--text-color)"
+              }} />}
               label={data.label}
-              onDelete={data.label === 'React' ? undefined : handleDelete(data)}
+              onDelete={data.label === 'Study' ? undefined : handleDelete(data)}
             />
           </ListItem>
         );

@@ -8,8 +8,10 @@ export default class Category extends React.Component {
         this.categories = ["Study","Ooo","Web","Stat"]
     }
 
-    addCategorie(param) {
-        db.collection('categories').doc(param)
+    async addCategorie(param) {
+        await db.collection('categories').doc().set({
+            name:param
+        })
     }
 
     async getCategories(){

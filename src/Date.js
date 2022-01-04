@@ -6,6 +6,7 @@ import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import CalendarPicker from '@mui/lab/CalendarPicker';
 import { makeStyles } from "@material-ui/core/styles";
 import Delete from "./components/delete.svg";
+import { DataGrid } from '@mui/x-data-grid';
 const useStyles = makeStyles({
     root: {
       // calendar
@@ -38,27 +39,35 @@ function Datepage() {
     const [todoList, setTodoList] = useState();
     const [date, setDate] = React.useState(null);
     const [check,setCheck]= useState(false);
+    const [pageSize, setPageSize] = React.useState(25);
 
     useEffect(() => {
-        const todoRef = firebase.database().ref("Todo");
-        todoRef.on("value", (snapshot) => {
-        const todos = snapshot.val();
-       
-        const todoList = [];
-        for (let id in todos) {
-            todoList.push({ id, ...todos[id] });
-        }
-        if(todoList.length === 0){
-            setCheck(true)
-        }
-        else{
-            setCheck(false)
-        }
- 
-        setTodoList(todoList);
+      const todoRef = firebase.database().ref("Todo");
+      todoRef.on("value", (snapshot) => {
+      const todos = snapshot.val();
      
-        });
-    }, []);
+      const todoList = [];
+      for (let id in todos) {
+          todoList.push({ id, ...todos[id] });
+      }
+      if(todoList.length === 0){
+          setCheck(true)
+      }
+      else{
+          setCheck(false)
+      }
+
+      setTodoList(todoList);
+    
+      
+      });
+     
+
+  }, []);
+
+  
+
+    
 
   
 
@@ -112,29 +121,37 @@ function Datepage() {
                 marginBottom:"100px"
 
             }}>
-                 {date && (
-            <div style={{
-              display:"flex",
-              alignItems:"center",
-              marginBottom:"20px"
-              
-            }}> 
-            <img src={Delete} className="x"  onClick={deleteDate} alt="delete" style={{
-              width:"20px",
+            {date && (
+              <div style={{
+                display:"flex",
+                alignItems:"center",
+                marginBottom:"20px"
+                
+              }}> 
+              <img src={Delete} className="x"  onClick={deleteDate} alt="delete" style={{
+                width:"20px",
+            
+              }}/>
+              <p style={{
+                marginTop:"0",
+                color:"#1976d2",
+                fontWeight:"bold",
+                margin:"0"
+              }}>Date picked: {convertDate(date)} </p>
+              </div>
+            )}
+ 
+           <div
+           pagination
+           pageSize={pageSize}
+           onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
+           rowsPerPageOptions={[2, 10, 20]}
            
-            }}/>
-            <p style={{
-              marginTop:"0",
-              color:"#1976d2",
-              fontWeight:"bold",
-              margin:"0"
-            }}>Date picked: {convertDate(date)} </p>
-            </div>
-          )}
-            {todoList
-            ? todoList.map((todo, index) => <Datecard todo={todo} key={index} className="test"/>)
-            : ""}
-
+           >
+            {todoList ? todoList.map((todo, index) => 
+              <Datecard todo={todo} key={index} className="test"/>
+            ): ""}
+            </div> 
             {check && (
             <div>
             <p style={{
