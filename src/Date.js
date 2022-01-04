@@ -6,7 +6,6 @@ import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import CalendarPicker from '@mui/lab/CalendarPicker';
 import { makeStyles } from "@material-ui/core/styles";
 import Delete from "./components/delete.svg";
-import { DataGrid } from '@mui/x-data-grid';
 const useStyles = makeStyles({
     root: {
       // calendar
@@ -39,7 +38,6 @@ function Datepage() {
     const [todoList, setTodoList] = useState();
     const [date, setDate] = React.useState(null);
     const [check,setCheck]= useState(false);
-    const [pageSize, setPageSize] = React.useState(25);
 
     useEffect(() => {
       const todoRef = firebase.database().ref("Todo");
@@ -141,17 +139,11 @@ function Datepage() {
               </div>
             )}
  
-           <div
-           pagination
-           pageSize={pageSize}
-           onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
-           rowsPerPageOptions={[2, 10, 20]}
-           
-           >
+         
             {todoList ? todoList.map((todo, index) => 
               <Datecard todo={todo} key={index} className="test"/>
             ): ""}
-            </div> 
+       
             {check && (
             <div>
             <p style={{
