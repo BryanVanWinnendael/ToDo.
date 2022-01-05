@@ -176,22 +176,28 @@ function TodoForm(){
     
   const createTodo = (event) => {
       event.preventDefault();
-      
+     
+      var categoriesTodo = ["default"]
+
+      for(var i of chipData){
+        categoriesTodo.push(i.label)
+      }
+
       const todoRef = firebase.database().ref("Todo");
       var todo = {}
      
       if(date === null){
         todo = {
           title,
-          complete: false,
-          date: false
+          date: false,
+          categories: categoriesTodo,
         };
       }
       else{
         todo = {
           title,
-          complete: false,
-          date:convertDate(date)
+          date: convertDate(date),
+          categories: categoriesTodo
         };
       }
      
@@ -199,6 +205,7 @@ function TodoForm(){
       setTitle("");   
       setDate(null)
       setPersonName([])
+      setChipData([])
     };
     
   function convertDate(dateString) {
