@@ -1,30 +1,5 @@
-<svg width="201" height="152" viewBox="0 0 201 152" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g filter="url(#filter0_d_202:9)">
-<ellipse cx="100" cy="72" rx="80" ry="72" fill="#282C34"/>
-</g>
-<g filter="url(#filter1_d_202:9)">
-<path d="M19.0652 54.6904C16.9854 50.7907 12.1379 49.3153 8.23822 51.3952C4.33857 53.475 2.86319 58.3226 4.94303 62.2222L34.5254 117.729L34.4978 117.744C36.5845 121.659 41.4507 123.142 45.3662 121.055C45.673 120.892 45.9644 120.711 46.2408 120.516L192.737 35.936C196.567 33.7349 197.888 28.8451 195.687 25.0148C193.486 21.1845 188.596 19.8638 184.766 22.065L44.7578 102.898L19.0653 54.6899L19.0652 54.6904Z" fill="#8860D0"/>
-</g>
-<defs>
-<filter id="filter0_d_202:9" x="16" y="0" width="168" height="152" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-<feOffset dy="4"/>
-<feGaussianBlur stdDeviation="2"/>
-<feComposite in2="hardAlpha" operator="out"/>
-<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
-<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_202:9"/>
-<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_202:9" result="shape"/>
-</filter>
-<filter id="filter1_d_202:9" x="0" y="21" width="200.752" height="109.001" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-<feOffset dy="4"/>
-<feGaussianBlur stdDeviation="2"/>
-<feComposite in2="hardAlpha" operator="out"/>
-<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
-<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_202:9"/>
-<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_202:9" result="shape"/>
-</filter>
-</defs>
+<svg width="1333" height="1218" viewBox="0 0 1333 1218" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="666" cy="575" r="500" fill="#1876D3"/>
+<path d="M310.865 566.9L429.647 670.58L607.82 515.06L566.988 479.42L429.647 597.68L351.697 531.26L310.865 566.9ZM310.865 356.3L429.647 459.98L607.82 304.46L566.988 268.82L429.647 387.08L351.697 320.66L310.865 356.3ZM310.865 777.5L429.647 881.18L607.82 725.66L566.988 690.02L429.647 808.28L351.697 741.86L310.865 777.5Z" fill="white"/>
+<path d="M682.058 542.6H1053.25V607.4H682.058V542.6ZM682.058 332H1053.25V396.8H682.058V332ZM682.058 753.2H1053.25V818H682.058V753.2Z" fill="white"/>
 </svg>
