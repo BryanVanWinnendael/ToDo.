@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Datecard from './components/Datecard'
-import {SwipeableList,SwipeableListItem} from "@sandstreamdev/react-swipeable-list"
 import firebase from "firebase";
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
@@ -8,7 +7,14 @@ import CalendarPicker from '@mui/lab/CalendarPicker';
 import { makeStyles } from "@material-ui/core/styles";
 import Delete from "./components/delete.svg";
 import {useCategory} from "./components/Category";
-
+import {
+ 
+  SwipeableList,
+  SwipeableListItem,
+  SwipeAction,
+  TrailingActions,
+} from 'react-swipeable-list';
+import 'react-swipeable-list/dist/styles.css';
 
 import { Button } from '@mui/material';
 import Chip from '@mui/material/Chip';
@@ -54,10 +60,10 @@ const useStyles = makeStyles({
      
     },
     cards:{
-      "& .swipeable-list-item":{
+      "& .swipeable-list-item__trailing-actions":{
         display:"flex",
         alignItems:"center",
-        color:"red"
+        
       }
     }
   });
@@ -123,6 +129,41 @@ function Datepage() {
     const [personName, setPersonName] = React.useState([]);
     const [open, setOpen] = React.useState(false);
     const [chipData, setChipData] = React.useState([]);
+
+
+    
+    const trailingActions = () => (
+      <TrailingActions
+      sx={{
+        display:"flex",
+        alignItems:"center",
+        justifyContent:"center",
+      }}
+      >
+        <SwipeAction
+          sx={{
+            display:"flex",
+            alignItems:"center",
+            justifyContent:"center",
+          }}
+          onClick={() => console.info('swipe action triggered')}
+        >
+          <div style={{
+            backgroundColor:"#cd0000",
+            borderRadius:"15px",
+            display:"flex",
+            alignItems:"center",
+            justifyContent:"center",
+            height:"100px"
+          }}>
+            <DeleteIcon style={{
+              fill:"white"
+            }}/>
+            
+          </div>
+        </SwipeAction>
+      </TrailingActions>
+    );
 
     async function e(){
       setNames()  
@@ -457,20 +498,22 @@ function Datepage() {
          
               { todoList ? todoList.map((todo, index) => 
                 
-                <SwipeableList  >
-                <SwipeableListItem
-                 
-                  swipeLeft={{
-                   
-                    action: () => console.info('swipe action triggered')
-                  }}
-                  sx={{w:"300px"}}
-                  className={classes.cards}
+                <SwipeableList
+                threshold={1}
+                className={classes.cards}
                 >
-                <Datecard todo={todo} ifcategories={ifcategories} key={index} className="test"/>
-
+                <SwipeableListItem
+                   sx={{
+                    display:"flex",
+                    alignItems:"center",
+                    justifyContent:"center",
+                  }}
+                   trailingActions={trailingActions()}
+                
+                >
+                  <Datecard todo={todo} ifcategories={ifcategories} key={index} className="test"/>
                 </SwipeableListItem>
-                </SwipeableList>
+              </SwipeableList>
 
 
               ): ""}

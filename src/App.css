@@ -67,15 +67,6 @@ p {
 
   /* background: linear-gradient(to bottom, #1976d2 0%, #5ba5f0 100%); */
   background-color: #1976d2;
-  transition-duration: 0.4s;
-}
-
-.carddate:hover {
-  transform: scale(1.1);
-}
-
-.carddate2:hover {
-  transform: scale(1.1);
 }
 
 .textdate {
