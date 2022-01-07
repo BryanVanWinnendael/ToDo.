@@ -1,6 +1,10 @@
 {
+  "start_url": "/",
   "display": "standalone",
-  "short_name": "ToDo.",
+  "theme_color": "#000000",
+  "background_color": "#ffffff",
+  "short_name": "ToDo",
+  "name": "ToDo.",
   "icons": [
     {
       "src": "manifest-icon-192.png",

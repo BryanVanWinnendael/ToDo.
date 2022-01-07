@@ -9,6 +9,8 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { Button } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import { makeStyles } from "@material-ui/core/styles";
+import Box from '@mui/material/Box';
+import Skeleton from '@mui/material/Skeleton';
 
 
 const useStyles = makeStyles({
@@ -108,7 +110,7 @@ function Profile() {
   
   
 
-  async function e(){
+  async function getChipData(){
       var res = []
       const snapshot = await useCategory.getCategories()
       const arr =  snapshot.docs.map(doc => doc.data());
@@ -125,7 +127,7 @@ function Profile() {
 
 
     const  [chipData, setChipData] = React.useState([]);
-    e()
+    getChipData()
   
   
     const handleDelete = (chipToDelete) => () => {
@@ -164,7 +166,9 @@ function Profile() {
               
             </div>
 
-            <div>
+            <div style={{
+              margin:"10px"
+            }}>
             <form onSubmit={onsubmit} style={{
           display:"flex",
           flexDirection:"column",
@@ -198,55 +202,67 @@ function Profile() {
               </Button>
             </form>
           </div>
-
+          
+          {chipData.length !== 0 && (
             <div>
             <Paper
-      sx={{
-        display: 'flex',
-        flexDirection:"row",
-        justifyContent: 'center',
-        flexWrap: 'wrap',
-        listStyle: 'none',
-        p: 0.5,
-        m: 2,
-        backgroundColor:"transparent",
-        color:"var(--text-color)",
-        width:"320px"
+            sx={{
+              display: 'flex',
+              flexDirection:"row",
+              justifyContent: 'center',
+              flexWrap: 'wrap',
+              listStyle: 'none',
+              p: 0.5,
+              m: 2,
+              backgroundColor:"transparent",
+              color:"var(--text-color)",
+              width:"320px"
 
-      }}
-      component="ul"
-    >
-      {chipData.map((data) => {
+            }}
+            component="ul"
+          >
+            {chipData.map((data) => {
        
 
 
-        return (
-          <ListItem key={data.key}
-          style={{
-            display:"flex",
-            flexDirection:"row",
-            color:"var(--text-color)"
-           
-          }}
-          >
-            <Chip
-              sx={{
-                color:"var(--text-color)",
-                fill:"var(--text-color)"
-                
-                
+            return (
+              <ListItem key={data.key}
+              style={{
+                display:"flex",
+                flexDirection:"row",
+                color:"var(--text-color)"
+              
               }}
-              deleteIcon={<DeleteIcon style={{
-                fill:"var(--text-color)"
-              }} />}
-              label={data.label}
-              onDelete={data.label === 'Study' ? undefined : handleDelete(data)}
-            />
+              >
+                <Chip
+                  sx={{
+                    color:"var(--text-color)",
+                    fill:"var(--text-color)"
+                    
+                    
+                  }}
+                  deleteIcon={<DeleteIcon style={{
+                    fill:"var(--text-color)"
+                  }} />}
+                  label={data.label}
+                  onDelete={data.label === 'Study' ? undefined : handleDelete(data)}
+                />
           </ListItem>
-        );
-      })}
-    </Paper>
+              );
+            })}
+          </Paper>
             </div>
+          )}
+          {
+            chipData.length === 0 && (
+              <Box sx={{ width: 300 }}>
+              <Skeleton />
+              <Skeleton animation="wave" />
+              <Skeleton animation={false} />
+            </Box>
+            )
+          }
+            
            
         </div>
     )

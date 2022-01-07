@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Datecard from './components/Datecard'
-
+import {SwipeableList,SwipeableListItem} from "@sandstreamdev/react-swipeable-list"
 import firebase from "firebase";
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
@@ -52,6 +52,13 @@ const useStyles = makeStyles({
       }
      
      
+    },
+    cards:{
+      "& .swipeable-list-item":{
+        display:"flex",
+        alignItems:"center",
+        color:"red"
+      }
     }
   });
 
@@ -329,7 +336,7 @@ function Datepage() {
               margin:"10px"
             }}>
             <Button variant="contained" onClick={handleClickOpen}>
-            Add a category
+            filter a category
           </Button>
           <Dialog open={open} onClose={handleClose} className={classes.category}  PaperProps={{
               style: {
@@ -449,7 +456,23 @@ function Datepage() {
             }}>
          
               { todoList ? todoList.map((todo, index) => 
+                
+                <SwipeableList  >
+                <SwipeableListItem
+                 
+                  swipeLeft={{
+                   
+                    action: () => console.info('swipe action triggered')
+                  }}
+                  sx={{w:"300px"}}
+                  className={classes.cards}
+                >
                 <Datecard todo={todo} ifcategories={ifcategories} key={index} className="test"/>
+
+                </SwipeableListItem>
+                </SwipeableList>
+
+
               ): ""}
 
               {/* {ifdate && todoList ? todoList.map((todo, index) => 

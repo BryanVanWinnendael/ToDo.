@@ -97,6 +97,19 @@ p {
   text-align: left;
 }
 
+.noInternet {
+  animation: internetdown 1s;
+}
+
+@keyframes internetdown {
+  0% {
+    top: -200px;
+  }
+  100% {
+    top: 0;
+  }
+}
+
 @media (min-width: 900px) {
 }
 
