@@ -7,6 +7,7 @@ import CalendarPicker from '@mui/lab/CalendarPicker';
 import { makeStyles } from "@material-ui/core/styles";
 import Delete from "./components/delete.svg";
 import {useCategory} from "./components/Category";
+import Alert from '@mui/material/Alert';
 import {
  
   SwipeableList,
@@ -121,6 +122,8 @@ setNames()
 function Datepage() {
     const classes = useStyles();
     const [todoList, setTodoList] = useState();
+    const [deletedTodo, setDeletedTodo] = useState(false);
+
     const [date, setDate] = React.useState(null);
     const [check,setCheck]= useState(false);
     const [ifcategories,setIfcategories]= useState(false);
@@ -132,7 +135,7 @@ function Datepage() {
 
 
     
-    const trailingActions = () => (
+    const trailingActions = (todo) => (
       <TrailingActions
       sx={{
         display:"flex",
@@ -146,7 +149,13 @@ function Datepage() {
             alignItems:"center",
             justifyContent:"center",
           }}
-          onClick={() => console.info('swipe action triggered')}
+          onClick={() => {
+            setDeletedTodo(false)
+            const todoRef = firebase.database().ref("Todo").child(todo.id);
+            todoRef.remove();
+            setDeletedTodo(true)
+          }
+        }
         >
           <div style={{
             backgroundColor:"#cd0000",
@@ -346,9 +355,30 @@ function Datepage() {
 
     return (
         <div style={{
-            marginTop:"35px"
+            marginTop:"35px",
+            width:"100%"
           }}>
+            {deletedTodo && (
+                <div style={{
+                  height:"50px",
+                  width:"100%",
+                  position:"fixed",
+                  top:"40px",
+                  display:"flex",
+                  justifyContent:"center",
+                  zIndex:"100",
+                  animation:"dropdownDelete 1s"
+                }}
+
+                >
+                <Alert sx={{
+                  position:"fixed",
+                  zIndex:"100"
+                }} severity="success" >Todo deleted successfully!</Alert>
+                </div>
+            )}
              
+            
             <LocalizationProvider dateAdapter={AdapterDateFns} >
                 <CalendarPicker date={date} onChange={(newDate) =>filter(newDate)} className={classes.root}/>      
             </LocalizationProvider>
@@ -508,7 +538,7 @@ function Datepage() {
                     alignItems:"center",
                     justifyContent:"center",
                   }}
-                   trailingActions={trailingActions()}
+                   trailingActions={trailingActions(todo)}
                 
                 >
                   <Datecard todo={todo} ifcategories={ifcategories} key={index} className="test"/>

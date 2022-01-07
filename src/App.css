@@ -92,6 +92,19 @@ p {
   animation: internetdown 1s;
 }
 
+/* .dropdownDelete{
+
+} */
+
+@keyframes dropdownDelete {
+  0% {
+    top: -200px;
+  }
+  100% {
+    top: 40px;
+  }
+}
+
 @keyframes internetdown {
   0% {
     top: -200px;
