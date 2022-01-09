@@ -1,21 +1,42 @@
 import React from "react";
 import {db} from "../util/firebase";
-import {setNames} from "./TodoForm";
+// import {UpdateChipsDataTodoForm} from "./TodoForm";
+// import {UpdateChipsDataHome} from "../Home";
+// import {UpdateChipsDataProfile} from "../Profile";
+
 
 export default class Category extends React.Component {
     constructor(props) {
         super(props);
-        this.categories = ["Study","Ooo","Web","Stat"]
+        this.categories = null
+        this.update = true
     }
+
 
     async addCategorie(param) {
         await db.collection('categories').doc().set({
             name:param
         })
+       
+        this.update = true
+        this.getCategories()
+       
     }
 
+
+
     async getCategories(){
-        const snapshot = await db.collection('categories').get();
+        var snapshot = null;
+        if(this.update){
+            snapshot = await db.collection('categories').get();
+            this.categories = snapshot
+            this.update = false
+             
+        }
+        else {
+            snapshot = this.categories
+        }
+        
         return snapshot;
     }
 
@@ -25,8 +46,7 @@ export default class Category extends React.Component {
         var deleteid = ""
         
         for(var i of arr){
-            console.log(i[1])
-            console.log(param)
+          
             if(i[1] === param.label){
                 
                 deleteid = i[0]
@@ -39,7 +59,14 @@ export default class Category extends React.Component {
             console.error("Error removing document: ", error);
         });
 
-        setNames()
+
+        const newSnapshot = await db.collection('categories').get();
+        this.categories = newSnapshot
+        this.update = true
+
+     
+
+
 
 
      

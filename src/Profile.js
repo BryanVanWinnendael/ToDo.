@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { styled } from '@mui/material/styles';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
@@ -91,48 +91,55 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   }));
 
 
+
 function Profile() {
   const [mode,setMode] = useState(localStorage.getItem("theme"));
   const [title, setTitle] = useState("");
   const classes = useStyles();
+  const  [chipData, setChipData] = React.useState([]);
     
      
   const handleChange = (e) => {
     setTitle(e.target.value);
+   
   };
 
   const onsubmit = (event) =>{
     event.preventDefault();
+    useCategory.addCategorie(title).then(() =>{
+      getCategories()
+    })
     setTitle("")
-    useCategory.addCategorie(title)
+
   }
 
-  
-  
+  const handleDelete = (chipToDelete) => () => {
+    useCategory.removeCategory(chipToDelete).then(() =>{
+      getCategories()
+    })
+   
+  };
 
-  async function getChipData(){
+
+  async function getCategories(){
+    await useCategory.getCategories().then((e) =>{
+      const arr = e.docs.map(doc => doc.data());
       var res = []
-      const snapshot = await useCategory.getCategories()
-      const arr =  snapshot.docs.map(doc => doc.data());
       for(var i of arr ){
         res.push({key:res.length,label:i.name})
       }
       setChipData(res)
-          
-    }
-
- 
-   
+    })
     
-
-
-    const  [chipData, setChipData] = React.useState([]);
-    getChipData()
+   
+  }
   
+  useEffect(() => {
+    getCategories()
+  }, []);
+
   
-    const handleDelete = (chipToDelete) => () => {
-      useCategory.removeCategory(chipToDelete)
-    };
+   
 
         
     function changemode(){
@@ -223,7 +230,6 @@ function Profile() {
           >
             {chipData.map((data) => {
        
-
 
             return (
               <ListItem key={data.key}

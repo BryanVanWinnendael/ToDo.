@@ -3,8 +3,8 @@ import {useActive} from './Active';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import HomeIcon from '@mui/icons-material/Home';
-import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import AddBoxIcon from '@mui/icons-material/AddBox';
 
 class Nav extends React.Component {
     constructor(props) {
@@ -12,8 +12,8 @@ class Nav extends React.Component {
         this.state = {
           navvalue:'home',
           fillhome: useActive.getActive() !== "home" ? "var(--text-color)" : "",
+          filladd: useActive.getActive() !== "add" ? "var(--text-color)" : "",
           fillprofile: useActive.getActive() !== "profile" ? "var(--text-color)" : "",
-          fillcallendar: useActive.getActive() !== "date" ? "var(--text-color)" : "",
 
 
         }
@@ -28,8 +28,8 @@ class Nav extends React.Component {
         this.setState({navvalue:newVal})
 
         this.setState({fillhome: useActive.getActive() !== "home" ? "var(--text-color)" : ""})
+        this.setState({filladd: useActive.getActive() !== "add" ? "var(--text-color)" : ""})
         this.setState({fillprofile: useActive.getActive() !== "profile" ? "var(--text-color)" : ""})
-        this.setState({fillcallendar: useActive.getActive() !== "date" ? "var(--text-color)" : ""})
        
     }
 
@@ -53,6 +53,14 @@ class Nav extends React.Component {
             fill: this.state.fillhome
         }}/>}
         />
+      
+        <BottomNavigationAction 
+        label="Add" 
+        value="add" 
+        icon={<AddBoxIcon style={{
+            fill: this.state.filladd
+        }} />} />
+
         <BottomNavigationAction
           label="Profile"
           value="profile"
@@ -60,12 +68,6 @@ class Nav extends React.Component {
               fill: this.state.fillprofile
           }}/>}
         />
-        <BottomNavigationAction 
-        label="Calendar" 
-        value="date" 
-        icon={<CalendarTodayIcon style={{
-            fill: this.state.fillcallendar
-        }} />} />
       </BottomNavigation>
 
        

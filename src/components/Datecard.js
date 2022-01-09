@@ -1,62 +1,63 @@
-import React, { useState } from "react";
-import dateicon from "./Nav/img/date.png"
+import React from "react";
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
+import Avatar from '@mui/material/Avatar';
+import Divider from '@mui/material/Divider';
+import { makeStyles } from "@material-ui/core/styles";
+import MenuBookIcon from '@mui/icons-material/MenuBook';
+import TaskIcon from '@mui/icons-material/Task';
+
+const useStyles = makeStyles({
+  root: {
+    "& .css-83ijpv-MuiTypography-root":{
+      color:"var(--text-color)"
+    }
+   
+  }
+  
+});
+
+
 function Datecard({ todo,ifcategories }){
-
-
-  const [newTitle] = useState("");
-  const [newDate] = useState("");
+  const classes = useStyles();
     return(
       <div>
      
-        { !ifcategories && todo.date !== false && (
-            <div className="carddate">
-            <div style={{
-                 height:"40%",
-                 display:"flex",
-                 alignItems:"center",
-                 margin:"10px"
-            }}> 
-            <img src={dateicon}  className="dateicon" id="dateId" alt="dates"/>
-            <p type="text" className="textdate">
-                {todo.date === false ? newDate : todo.date}
-            </p>
-            </div>
-
-            <div>
-            <p type="text" className="titledate">
-                {todo.title === "" ? newTitle : todo.title}
-            </p>
-            </div>
-          
-        </div>
+        { !ifcategories && (
+            <div >
+             <ListItem >
+              <ListItemAvatar>
+                <Avatar>
+                  {todo.categories.includes("Study") && (
+                  <MenuBookIcon />
+                  )}
+                  {
+                    !todo.categories.includes("Study") &&(
+                      <TaskIcon />
+                    )
+                  }
+                </Avatar>
+              </ListItemAvatar>
+              <ListItemText primary={todo.title} secondary={todo.date} className={classes.root} />
+            </ListItem>
+            <Divider variant="inset" component="li" sx={{backgroundColor:"var(--text-color)"}} />
+          </div>
                
         )}
 
-          {ifcategories && todo.categories.length !== 1 && (
-            <div className="carddate">
-            <div style={{
-                 height:"40%",
-                 display:"flex",
-                 alignItems:"center",
-                 margin:"10px"
-            }}> 
-            <img src={dateicon}  className="dateicon" id="dateId" alt="dates"/>
-            {todo.date !== false && (
-              <p type="text" className="textdate">
-                {todo.date === false ? newDate : todo.date}
-              </p>
-            )}
-            
-            </div>
-
+          {ifcategories  && (
             <div>
-            <p type="text" className="titledate">
-                {todo.title === "" ? newTitle : todo.title}
-            </p>
-            </div>
-          
+            <ListItem >
+              <ListItemAvatar>
+                <Avatar>
+                  <MenuBookIcon />
+                </Avatar>
+              </ListItemAvatar>
+              <ListItemText primary={todo.title} secondary={todo.date} className={classes.root} />
+            </ListItem>
+            <Divider variant="inset" component="li" sx={{backgroundColor:"var(--text-color)"}} />
         </div>
-               
         )}  
          
      

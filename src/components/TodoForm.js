@@ -22,6 +22,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import Alert from '@mui/material/Alert';
 
 const useStyles = makeStyles({
   root: {
@@ -108,16 +109,16 @@ const MenuProps = {
 var names = []
 
 
-export async function setNames(){
+export async function UpdateChipsDataTodoForm(){
   var arrayres = []
+  useCategory.getCategories()
   var res = await useCategory.getCategories()
-  const arr =  res.docs.map(doc => doc.data());
+  const arr = res.docs.map(doc => doc.data())
   for(var i of arr){
     arrayres.push(i.name)
   }
   names = arrayres
 }
-setNames()
 
 
 function getStyles(name, personName, theme) {
@@ -144,12 +145,13 @@ function TodoForm(){
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const [chipData, setChipData] = React.useState([]);
+  const [addedTodo, setAddedTodo] = useState(false);
 
 
-  async function e(){
-    setNames()  
+  async function setChips(){
+    UpdateChipsDataTodoForm()
   }
-  e()
+  setChips()
   
   const handleChange = (e) => {
       setTitle(e.target.value);
@@ -176,7 +178,6 @@ function TodoForm(){
     
   const createTodo = (event) => {
       event.preventDefault();
-     
       var categoriesTodo = ["default"]
 
       for(var i of chipData){
@@ -206,6 +207,8 @@ function TodoForm(){
       setDate(null)
       setPersonName([])
       setChipData([])
+      setAddedTodo(true)
+
     };
     
   function convertDate(dateString) {
@@ -253,8 +256,34 @@ function TodoForm(){
   
   
   return(
-        <form onSubmit={createTodo} >
-        
+        <form onSubmit={createTodo}  style={{
+          marginTop:"35px",
+          width:"100%",
+          display:"flex",
+          flexDirection:"column",
+          justifyContent:"center",
+          alignItems:"center"
+
+        }}>
+          {addedTodo && (
+                <div style={{
+                  height:"50px",
+                  width:"100%",
+                  position:"fixed",
+                  top:"-200px",
+                  display:"flex",
+                  justifyContent:"center",
+                  zIndex:"100",
+                  animation:"dropdownDelete 3s"
+                }}
+
+                >
+                <Alert sx={{
+                  position:"fixed",
+                  zIndex:"100"
+                }} severity="success" >Todo added successfully!</Alert>
+                </div>
+            )}
        
         <div>
        

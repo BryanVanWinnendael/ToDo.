@@ -4,7 +4,7 @@ import './App.css';
 import Home from "./Home"
 import Nav from "./components/Nav/Nav";
 import {useActive} from './components/Nav/Active';
-import Date from "./Date";
+import Add from "./Add";
 import Header from "./components/Header";
 import Profile from "./Profile"
 import useNetworkStatus from "./components/useNetworkStatus";
@@ -42,8 +42,8 @@ function App() {
        
        <Header/>
         {currentView === 'home' && (<Home/>)}
+        {currentView === 'add' && (<Add/>)}
         {currentView === 'profile' && (<Profile/>)}
-        {currentView === 'date' && (<Date/>)}
         <Nav toggleProjects={toggleShowProjects}/>
         
         {!status && (
