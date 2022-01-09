@@ -28,7 +28,7 @@ function Datecard({ todo,ifcategories }){
             <div >
              <ListItem >
               <ListItemAvatar>
-                <Avatar>
+                <Avatar sx={{backgroundColor:"#1976d2"}}>
                   {todo.categories.includes("Study") && (
                   <MenuBookIcon />
                   )}
