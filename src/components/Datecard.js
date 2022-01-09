@@ -10,7 +10,7 @@ import TaskIcon from '@mui/icons-material/Task';
 
 const useStyles = makeStyles({
   root: {
-    "& .css-83ijpv-MuiTypography-root":{
+    "& .MuiListItemText-secondary":{
       color:"var(--text-color)"
     }
    
