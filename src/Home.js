@@ -342,7 +342,7 @@ function Home() {
         const box = document.getElementsByClassName("carddate")
         console.log(box)
         for(var i of box){
-           if(i.getElementsByClassName("MuiTypography-root MuiTypography-body2 MuiListItemText-secondary css-83ijpv-MuiTypography-root")[0].innerHTML !== convertDate(dategiven)){
+           if(i.getElementsByClassName("MuiListItemText-secondary")[0].innerHTML !== convertDate(dategiven)){
                i.style.display = "none"
            }
 
