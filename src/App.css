@@ -59,16 +59,6 @@ p {
   align-items: center;
 }
 
-.carddate {
-  color: white;
-  width: 170px;
-  height: 120px;
-  border-radius: 8px;
-
-  /* background: linear-gradient(to bottom, #1976d2 0%, #5ba5f0 100%); */
-  background-color: #1976d2;
-}
-
 .textdate {
   padding: 20px;
   font-size: large;

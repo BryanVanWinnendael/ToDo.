@@ -22,7 +22,7 @@ const useStyles = makeStyles({
 function Datecard({ todo,ifcategories }){
   const classes = useStyles();
     return(
-      <div>
+      <div className="carddate">
      
         { !ifcategories && (
             <div >
