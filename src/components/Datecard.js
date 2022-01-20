@@ -22,7 +22,10 @@ const useStyles = makeStyles({
 function Datecard({ todo,ifcategories }){
   const classes = useStyles();
     return(
-      <div className="carddate">
+      <div style={{
+        width:"100%"
+      }}
+      className="carddate">
      
         { !ifcategories && (
             <div >
@@ -50,8 +53,15 @@ function Datecard({ todo,ifcategories }){
             <div>
             <ListItem >
               <ListItemAvatar>
-                <Avatar>
+                <Avatar sx={{backgroundColor:"#1976d2"}}>
+                  {todo.categories.includes("Study") && (
                   <MenuBookIcon />
+                  )}
+                  {
+                    !todo.categories.includes("Study") &&(
+                      <TaskIcon />
+                    )
+                  }
                 </Avatar>
               </ListItemAvatar>
               <ListItemText primary={todo.title} secondary={todo.date} className={classes.root} />

@@ -8,9 +8,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import Delete from "./components/delete.svg";
 import {useCategory} from "./components/Category";
 import Alert from '@mui/material/Alert';
-
+import Box from '@mui/material/Box';
+import Skeleton from '@mui/material/Skeleton';
 import {
- 
   SwipeableList,
   SwipeableListItem,
   SwipeAction,
@@ -124,7 +124,7 @@ export async function UpdateChipsDataHome(){
 
 function Home() {
     const classes = useStyles();
-    const [todoList, setTodoList] = useState();
+    const [todoList, setTodoList] = useState("");
     const [deletedTodo, setDeletedTodo] = useState(false);
 
     const [date, setDate] = React.useState(null);
@@ -337,10 +337,11 @@ function Home() {
     }
 
     function filter(dategiven){
+      
         setDate(dategiven)
         resetFilter()
         const box = document.getElementsByClassName("carddate")
-        console.log(box)
+       
         for(var i of box){
            if(i.getElementsByClassName("MuiListItemText-secondary")[0].innerHTML !== convertDate(dategiven)){
                i.style.display = "none"
@@ -475,7 +476,7 @@ function Home() {
           </Dialog>
    
 
-          <Paper
+          { chipData.length !== 0 && (<Paper
       sx={{
         display: 'flex',
         flexDirection:"row",
@@ -492,7 +493,7 @@ function Home() {
       component="ul"
     >
      
-      {chipData.length === 0 && (<p>No category chosen</p>)}
+      {/* {chipData.length === 0 && (<p>No category chosen</p>)} */}
 
       {chipData.map((data) => {
         // let icon;
@@ -518,18 +519,9 @@ function Home() {
           </ListItem>
         );
       })}
-        </Paper>
+        </Paper>)}
             </div>
 
-
-
-
-
-
-
-
-
-           
             <div id="todobox" style={{
                 width:"100%",
                 display:"flex",
@@ -545,38 +537,45 @@ function Home() {
             }}>
          
               { todoList ? todoList.map((todo, index) => 
-                
-                <SwipeableList
-                threshold={1}
-                className={classes.cards}
-                >
-                <SwipeableListItem
-                   sx={{
-                    display:"flex",
-                    alignItems:"center",
-                    justifyContent:"center",
-                  }}
-                   trailingActions={trailingActions(todo)}
-                
-                >
-                  <Datecard todo={todo} ifcategories={ifcategories} key={index} className="test"/>
-                </SwipeableListItem>
-              </SwipeableList>
+                  
+                  <SwipeableList 
+                  threshold={0.5}
+                  className={classes.cards}
+                  >
+                  <SwipeableListItem
+                    sx={{
+                      display:"flex",
+                      alignItems:"center",
+                      justifyContent:"center",
+                      width:"100%"
+                    }}
+                    trailingActions={trailingActions(todo)}
+                  
+                  >
+                    <Datecard todo={todo} ifcategories={ifcategories} key={index} className="test"/>
+                  </SwipeableListItem>
+                </SwipeableList>
 
 
               ): ""}
 
-              {/* {ifdate && todoList ? todoList.map((todo, index) => 
-                <Card todo={todo} key={index} className="test"/>
-              ): ""} */}
+              {todoList === "" && (
+                 <Box sx={{ width: 300 }}>
+                  <Skeleton />
+                  <Skeleton animation="wave" />
+                  <Skeleton animation={false} />
+                </Box>          
+              )}
 
             </div>
+
             {check && (
             <div>
-            <p style={{
-                color:"var(--text-color)"
-            }}>Your task list is looking empty... </p>
-          
+              <p style={{
+                  color:"var(--text-color)"
+              }}>
+              Your task list is looking empty... 
+              </p>
             </div>
             )}      
             </div>

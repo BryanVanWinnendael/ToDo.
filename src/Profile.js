@@ -11,7 +11,11 @@ import TextField from '@mui/material/TextField';
 import { makeStyles } from "@material-ui/core/styles";
 import Box from '@mui/material/Box';
 import Skeleton from '@mui/material/Skeleton';
-
+import ArrowForwardIosSharpIcon from '@mui/icons-material/ArrowForwardIosSharp';
+import MuiAccordion from '@mui/material/Accordion';
+import MuiAccordionSummary from '@mui/material/AccordionSummary';
+import MuiAccordionDetails from '@mui/material/AccordionDetails';
+import Typography from '@mui/material/Typography';
 
 const useStyles = makeStyles({
   root: {
@@ -33,6 +37,8 @@ const useStyles = makeStyles({
   }
 
 });
+
+
 
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
     width: 62,
@@ -88,6 +94,44 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
     width:"auto",
   
   
+  }));
+
+  const Accordion = styled((props) => (
+    <MuiAccordion disableGutters elevation={0} square {...props} />
+  ))(({ theme }) => ({
+    backgroundColor:"var(--bg-color)",
+    '&:before': {
+      display: 'none',
+    },
+
+  }));
+  
+  const AccordionSummary = styled((props) => (
+    <MuiAccordionSummary
+      expandIcon={<ArrowForwardIosSharpIcon sx={{ fontSize: '0.9rem',fill:"var(--text-color)" }} />}
+      {...props}
+    />
+  ))(({ theme }) => ({
+    backgroundColor:"var(--bg-color)",
+    color:"var(--text-color)",
+    borderBottom:localStorage.getItem("theme") === "darkmode"? "0.01em solid gray":"0.01em solid black",
+    flexDirection: 'row-reverse',
+
+    '& .MuiAccordionSummary-expandIconWrapper.Mui-expanded': {
+
+      transform: 'rotate(90deg)',
+    },
+    '& .MuiAccordionSummary-content': {
+
+      marginLeft: theme.spacing(1),
+    },
+
+  }));
+  
+  const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
+    padding: theme.spacing(2),
+    backgroundColor:"var(--bg-color)",
+    color:"var(--text-color)",
   }));
 
 
@@ -158,58 +202,89 @@ function Profile() {
         
     }
 
+   
+    
+  
+      const [expanded, setExpanded] = React.useState();
+    
+      const handleChangeAcordion = (panel) => (event, newExpanded) => {
+        setExpanded(newExpanded ? panel : false);
+      }
+
     return (
-        <div>
+        <div >
+
+          <h1 style={{
+            color:"var(--text-color)",
+            marginTop:"50px"
+          }}>Settings</h1>
+
             <div style={{
-                marginTop:"200px"
+            textAlign:"left",
+          
             }}>
-            <FormControlLabel 
-                style={{
-                    color:"var(--text-color)"
-                }}
-                control={<MaterialUISwitch  checked={mode === "darkmode" ? true:false } onClick={changemode} />}
-                label="Dark Mode"
-            />
-              
+              <label style={{color:"var(--text-color)",margin:"15px"}}>Darkmode:</label>
+              <FormControlLabel 
+                  style={{
+                      color:"var(--text-color)"
+                  }}
+                  label=""
+                  control={<MaterialUISwitch  checked={mode === "darkmode" ? true:false } onClick={changemode} />}
+                
+              />
             </div>
 
-            <div style={{
-              margin:"10px"
-            }}>
-            <form onSubmit={onsubmit} style={{
-          display:"flex",
-          flexDirection:"column",
-          }}>
-              <TextField id="inputtask"  variant="standard" label="Add category"
-              type="text"
-              onChange={handleChange}  
-              value={title} 
-              name="task"
-              required
-              className={classes.root}            
-              />
-              <Button variant="contained" type="submit" style={{
-                marginTop:"10px",
-              }} startIcon={
-                <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M12 4C11.4477 4 11 4.44772 11 5V11H5C4.44772 11 4 11.4477 4 12C4 12.5523 4.44772 13 5 13H11V19C11 19.5523 11.4477 20 12 20C12.5523 20 13 19.5523 13 19V13H19C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11H13V5C13 4.44772 12.5523 4 12 4Z"
-                    fill="currentColor"
+              <Accordion expanded={expanded === 'panel1'} onChange={handleChangeAcordion('panel1')} style={{marginTop:"20px"}}>
+                <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
+                  <Typography>Add category</Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                <div style={{
+                  margin:"10px"
+              }}>
+                
+                <form onSubmit={onsubmit} style={{
+                display:"flex",
+                flexDirection:"column",
+                }}>
+                  <TextField id="inputtask"  variant="standard" label="Add category"
+                  type="text"
+                  onChange={handleChange}  
+                  value={title} 
+                  name="task"
+                  required
+                  className={classes.root}            
                   />
-                </svg>
+                  <Button variant="contained" type="submit" style={{
+                    marginTop:"10px",
+                  }} startIcon={
+                    <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M12 4C11.4477 4 11 4.44772 11 5V11H5C4.44772 11 4 11.4477 4 12C4 12.5523 4.44772 13 5 13H11V19C11 19.5523 11.4477 20 12 20C12.5523 20 13 19.5523 13 19V13H19C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11H13V5C13 4.44772 12.5523 4 12 4Z"
+                        fill="currentColor"
+                      />
+                    </svg>
 
-              }>
-                Add
-              </Button>
-            </form>
-          </div>
+                  }>
+                    Add
+                  </Button>
+                </form>
+              </div>
+            </AccordionDetails>
+          </Accordion>
           
+          <Accordion expanded={expanded === 'panel2'} onChange={handleChangeAcordion('panel2')}>
+            <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
+              <Typography>Edit category</Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+                
           {chipData.length !== 0 && (
             <div>
             <Paper
@@ -262,12 +337,17 @@ function Profile() {
           {
             chipData.length === 0 && (
               <Box sx={{ width: 300 }}>
-              <Skeleton />
-              <Skeleton animation="wave" />
-              <Skeleton animation={false} />
-            </Box>
+                <Skeleton />
+                <Skeleton animation="wave" />
+                <Skeleton animation={false} />
+              </Box>
             )
           }
+            </AccordionDetails>
+          </Accordion>
+
+         
+       
             
            
         </div>
